@@ -53,7 +53,7 @@ class SignIn extends Component
           console.log(this.props.username)
     return(
         <div className="header">
-            {this.props.submit?<Dashboard username={this.props.username} submit={this.props.log}/>
+            {this.props.submit?<Dashboard username={this.props.username} submit={this.props.submit}/>
             :
             <MDBContainer>
             <MDBRow>

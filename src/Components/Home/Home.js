@@ -32,10 +32,11 @@ class Home extends React.Component {
 
    handleMovie=(event)=>
   {
-    this.setState({display:true,toggle:false})
+    this.setState({display:false,toggle:false})
     this.props.onMovieChange(event.target.value)
   }
   enterPressed= async(e)=>{
+    this.setState({display:false})
     var code=e.keycode||e.which;
     if(code==13)
     {
@@ -64,15 +65,22 @@ watchlist= async ()=>{
   else{
   await this.props.watchLists(this.props.username)}
 }
+handleClick(event) {
+  this.setState({
+    currentPage: Number(event.target.id)
+  });
+}
   render() {
     let movie;
-   
+   console.log(this.props.movie1)
+   console.log(this.props.chage)
     if(this.props.chage)
      movie = this.props.movie1
     else
      movie = this.props.movie
    
-    const { currentPage, todosPerPage } = this.state;
+    const  currentPage=this.state.currentPage
+    const todosPerPage  = this.state.todosPerPage;
     let currentTodos
     // Logic for displaying movies
     if(movie.length>todosPerPage){
@@ -117,7 +125,9 @@ watchlist= async ()=>{
           ]}
         />
       </Card></Col>
+      
     })
+    console.log(array)
     return (
       
       <div >
@@ -209,14 +219,15 @@ watchlist= async ()=>{
             </nav>
 
 
-          </footer></div>: <Switch><Route path="/home" exact component={Side}></Route>
+          </footer></div>: <Switch>
          <Route path="/movie" exact component={Movie}></Route>
          <Route path="/sigup" exact component={Signup}></Route>
          <Route path="/log" exact component={Log}></Route>
          {this.props.submit?
          <Switch>
          <Route path="/watchlist" exact component={Watchlist}></Route>
-         <Route path="/favlist" exact component={Favlist}></Route></Switch>:
+         <Route path="/favlist" exact component={Favlist}></Route></Switch>
+          :
          <Redirect to="/sigup"/>}
          
          </Switch>
@@ -224,6 +235,7 @@ watchlist= async ()=>{
            
   }
         </div>:<Switch>
+        <Route path="/movie" exact component={Movie}></Route>
          <Route path="/sigup" exact component={Signup}></Route>
          <Route path="/log" exact component={Log}></Route>
          
@@ -235,4 +247,5 @@ watchlist= async ()=>{
     );
           }
 };
-export default Home
+
+export default Home;

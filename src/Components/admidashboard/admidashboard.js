@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard,MDBIcon,
     MDBCardHeader, MDBCardBody } from 'mdbreact';
 import {Link} from 'react-router-dom'
-import UserDash from '../UserDashboard/UserDashboard'
-import Home from '../Home/Home'
+import Home from '../../Container/Home'
 import { connect } from "react-redux";
 class Dashboard extends Component{
     render()
@@ -24,7 +23,7 @@ class Dashboard extends Component{
                                 <option value="user">User</option>
                             </select><br></br><br></br>
             <MDBBtn class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={this.HandleSubmit}>signup</MDBBtn>&nbsp;&nbsp;&nbsp;&nbsp;
-        </div>:<Home username={this.props.username}/>}
+        </div>:<Home/>}
 
         </div>
         )
