@@ -1,0 +1,45 @@
+.App {
+    font-family: sans-serif;
+  }
+  /* .header {
+    padding: 20px;
+    position: relative;
+    color: #fff;
+    text-align: center;
+    background-color: #159957;
+    background-image: linear-gradient(120deg, #155799, #159957);
+  } */
+  .sourceLink {
+    left: 20px;
+    bottom: 25px;
+    position: absolute;
+    color: #fff;
+  }
+  .header small {
+    text-align: right;
+    display: block;
+    margin-bottom: 5px;
+  }
+  h5{
+      color:whitesmoke;
+      
+  }
+  
+  #multiselectContainerReact {
+    margin-bottom: 20px;
+    float: none;
+  }
+ 
+  .displayBlock {
+    display: block;
+  }
+  .contents a {
+    display: block;
+    margin-bottom: 10px;
+    color: #1062c0;
+    text-decoration: underline;
+  }
+  .otheroptions {
+    font-size: 14px;
+  }
+  

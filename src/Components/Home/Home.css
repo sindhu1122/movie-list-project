@@ -137,7 +137,7 @@ li{
 
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
-  fill:lightblue;
+  fill:rgb(159, 214, 233);
 }
 
 /* Wrapper for item list */

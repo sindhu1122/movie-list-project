@@ -1,5 +1,5 @@
 import Signup from '../Components/Signup/Signup'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 const mapDispatchToProps = dispatch => {
     return {
         onNameChange: (value) =>
@@ -12,7 +12,7 @@ const mapDispatchToProps = dispatch => {
                 type: "PASSWORDCHANGE",
                 payload: value
             }),
-       
+
         getItem: () =>
             dispatch({
                 type: "GET",
@@ -22,24 +22,24 @@ const mapDispatchToProps = dispatch => {
                 type: "SET",
                 payload: obj
             }),
-            setEmail:(value)=>
+        setEmail: (value) =>
             dispatch({
-                type:"EMAIL",
-                payload:value
+                type: "EMAIL",
+                payload: value
             }),
-            setRole:(value)=>
+        setRole: (value) =>
             dispatch({
-                type:"ROLE",
-                payload:value
+                type: "ROLE",
+                payload: value
             }),
- 
+
     };
 };
 const mapStateToProps = (state) => ({
     userName: state.signUp.userName,
     password: state.signUp.password,
-    email:state.signUp.email,
-    role:state.signUp.role,
+    email: state.signUp.email,
+    role: state.signUp.role,
     data: state.signUp.data
 })
 

@@ -1,4 +1,4 @@
-import Home from '../Components/Home/Home'
+import Side from '../Components/Side/Side'
 import { connect } from 'react-redux'
 const mapDispatchToProps = dispatch => {
     return {
@@ -16,20 +16,20 @@ const mapDispatchToProps = dispatch => {
                 type: "DISPLAY",
                 payload: value
             }),
-        //   favLists:(value)=>
-        //   dispatch({
-        //   type:"FAVLISTS",
-        //   payload:value
-        //   }),
-        //   watchLists:(value)=>
-        //   dispatch({
-        //   type:"WATCHLIST",
-        //   payload:value
-        //   }),
-        //   logout:()=>
-        //   dispatch({
-        //       type:"LOGOUT"
-        //   })
+        favLists: (value) =>
+            dispatch({
+                type: "FAVLISTS",
+                payload: value
+            }),
+        watchLists: (value) =>
+            dispatch({
+                type: "WATCHLIST",
+                payload: value
+            }),
+        logout: () =>
+            dispatch({
+                type: "LOGOUT"
+            })
     }
 }
 
@@ -41,4 +41,4 @@ const mapStateToProps = (state) => ({
     display: state.search.display,
     username: state.login.username
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Side);
