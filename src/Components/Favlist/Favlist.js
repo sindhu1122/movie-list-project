@@ -8,8 +8,10 @@ import {
     Link,
     Redirect
 } from "react-router-dom";
+
 import Movie from '../../Container/movie'
 import Side from '../../Container/Side'
+const { Meta } = Card;
 class Favlist extends Component {
     state = {
         display: false
@@ -19,12 +21,25 @@ class Favlist extends Component {
         this.setState({ display: true })
         this.props.display1(obj)
     }
-    render() {
+    render(){
         let array = this.props.favlist.map(obj => {
 
 
-            return <Col span={8}><Card style={{ width: 300, marginTop: 16 }} title={obj} extra={<Link to="/movie" onClick={() => { this.moviedetails(obj) }}>More</Link>}>
-            </Card></Col>
+            return <Col span={8}><Card style={{ width: 300, marginTop: 16 }} title={obj.movieName} extra={<Link to="/movie" onClick={() => { this.moviedetails(obj.movieName) }}>More</Link>}>
+        
+                <Meta
+
+                    description={[
+                        <div>
+                            <img
+                                alt="poster not found"
+                                src={obj.imgURL}
+                            />
+                        </div>
+                    ]}
+                />
+                </Card>
+            </Col>
         })
         return (
             <div>

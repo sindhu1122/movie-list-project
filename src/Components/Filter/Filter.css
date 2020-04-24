@@ -42,4 +42,7 @@
   .otheroptions {
     font-size: 14px;
   }
-  
+  .groupHeading {
+    font-size:30px;
+    color: lightcoral;
+  }

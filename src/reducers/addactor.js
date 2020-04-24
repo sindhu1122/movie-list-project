@@ -44,7 +44,18 @@ const addactor = (state = initialState, action) => {
                 ...state,
                 editage: action.payload
             }
-
+        case actionTypes.PERSONSUBMIT:
+            return{
+                ...state
+            }
+        case actionTypes.PERSONEDIT:
+            return{
+                ...state
+            }
+        case actionTypes.PERSONDELETE:
+            return{
+                ...state
+            }
         default:
             return state;
     }

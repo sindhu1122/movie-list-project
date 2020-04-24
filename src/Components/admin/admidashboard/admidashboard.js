@@ -13,6 +13,7 @@ import Addactor from '../../../Container/addActor'
 import AddProducer from '../../../Container/addProducer'
 import AddActress from '../../../Container/addActress'
 import Signup from '../../../Container/Signup'
+import EditMovie from '../../../Container/editMovie'
 class Dashboard extends Component {
   render() {
 
@@ -37,6 +38,11 @@ class Dashboard extends Component {
                   <li class="nav-item">
                     <Link class="nav-link waves-effect waves-light" to='/addmovie'>
                       <i class="fa fa-plus-circle"></i> Movie
+                </Link>
+                  </li>
+                  <li class="nav-item">
+                    <Link class="nav-link waves-effect waves-light" to='/editmovie'>
+                      <i class="fa fa-plus-circle"></i> Edit and Delete Movie
                 </Link>
                   </li>
                   <li class="nav-item">
@@ -78,6 +84,7 @@ class Dashboard extends Component {
             <Route path="/actor" exact component={Addactor}></Route>
             <Route path="/producer" exact component={AddProducer}></Route>
             <Route path="/actress" exact component={AddActress}></Route>
+            <Route path="/editmovie" exact component={EditMovie}></Route>
             <Redirect to="/logout" component={Signup} />
           </Switch>
         </div>

@@ -25,12 +25,14 @@ class Home extends React.Component {
   state = {
 
     currentPage: 1,
-    todosPerPage: 3,
+    todosPerPage: 6,
     toggle: false,
     display: false
   }
 
-
+  componentDidMount=()=>{
+    this.props.movielist()
+  }
   handleMovie = (event) => {
     this.setState({ display: false, toggle: false })
     this.props.onMovieChange(event.target.value)
@@ -49,6 +51,7 @@ class Home extends React.Component {
     let movie;
     console.log(this.props.movie1)
     console.log(this.props.chage)
+    console.log(this.props.movie)
     if (this.props.chage)
       movie = this.props.movie1
     else
@@ -62,6 +65,7 @@ class Home extends React.Component {
       const indexOfLastTodo = currentPage * todosPerPage;
       const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
       currentTodos = movie.slice(indexOfFirstTodo, indexOfLastTodo);
+      console.log(currentTodos)
     }
     else {
       currentTodos = movie
@@ -86,15 +90,17 @@ class Home extends React.Component {
           </li> : null
       );
     });
-    let array = currentTodos.map(obj => {
-      return <Col span={8}><Card style={{ width: 300, marginTop: 16 }} title={obj} extra={<Link to="/movie" onClick={() => { this.moviedetails(obj) }}>More</Link>}>
-        return
+    let array = currentTodos.map((obj,key) => {
+      return <Col span={8}><Card style={{ width: 500, marginTop: 16 }} title={currentTodos[key].movieName} extra={<Link to="/movie" onClick={() => { this.moviedetails(currentTodos[key].movieName) }}>More</Link>}>
+        
                 <Meta
 
           description={[
             <div>
-              <p>"www.instagram.com"</p>&nbsp;&nbsp;&nbsp;
-            <p> additional content</p>
+              <img
+                            alt="poster not found"
+                            src={currentTodos[key].imgURL}
+                        />
             </div>
           ]}
         />
@@ -172,7 +178,7 @@ class Home extends React.Component {
           </Row>
         </div>
 
-        <footer class="page-footer font-small lightblue" class="fixed-bottom" >
+        <footer class="page-footer font-small lightblue" class="bottom" >
 
 
           <nav aria-label="Page navigation example">

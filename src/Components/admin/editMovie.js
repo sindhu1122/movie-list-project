@@ -5,7 +5,6 @@ import {
     MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBIcon,
     MDBCardHeader, MDBCardBody
 } from 'mdbreact';
-import './Addmovie.css'
 import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
 class Addmovie extends Component {
     constructor(props) {
@@ -15,52 +14,52 @@ class Addmovie extends Component {
             submit: false
         }
         this.handleSubmit = this.handleSubmit.bind(this);
-
+        this.delete=this.delete.bind(this)
     }
     handleSubmit = () => {
-       let obj={
-            movieName:this.props.name,
-            releaseYear:this.props.year,
-            actor:this.props.actors,
-            actress:this.props.actress,
-            director:this.props.director,
-            producer:this.props.producer,
-            rating:this.props.rating,
-            imgURL:this.props.imgURL
+       let obj={}
+        //     movieName:this.props.name,
+        //     releaseYear:this.props.year,
+        //     actor:this.props.actors,
+        //     actress:this.props.actress,
+        //     director:this.props.director,
+        //     producer:this.props.producer,
+        //     rating:this.props.rating,
+        //     imgURL:this.props.imgURL
 
-        }
-        if (this.props.name.length <= 0) {
+        // }
+        if(this.props.name)
+        obj={...obj,movieName:this.props.name}
+        if(this.props.year)
+        obj={...obj,releaseYear:this.props.year}
+        if(this.props.actors)
+        obj={...obj,actor:this.props.actors}
+        if(this.props.actress)
+        obj={...obj,actress:this.props.actress}
+        if(this.props.director)
+        obj={...obj,director:this.props.director}
+        if(this.props.producer)
+        obj={...obj,producer:this.props.producer}
+        if(this.props.rating)
+        obj={...obj,rating:this.props.rating}
+        if(this.props.imgURL)
+        obj={...obj,imgURL:this.props.imgURL}
+        if (this.props.editname.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
-            document.getElementById("mname").focus()
+            document.getElementById("ename").focus()
         }
-        else if (this.props.year.length <= 0) {
-            ToastsStore.warning('Year is Mandatory')
-            document.getElementById("ryear").focus()
-        }
-        else if (this.props.producer.length <= 0) {
-            ToastsStore.warning('Producer is Mandatory')
-            document.getElementById("producer").focus()
-        }
-        else if (this.props.director.length <= 0) {
-            ToastsStore.warning('Director is Mandatory')
-            document.getElementById("director").focus()
-        }
-        else if (this.props.actors.length <= 0) {
-            ToastsStore.warning('Actors is Mandatory')
-            document.getElementById("actor").focus()
-        }
-        else if (this.props.actress.length <= 0) {
-            ToastsStore.warning('Actress is Mandatory')
-            document.getElementById("actress").focus()
-        }
-
-
-
+       
         else {
-            ToastsStore.success("Movie Added successfully")
+            console.log(obj)
+            this.props.movieUpdate(this.props.editname,obj)
+            ToastsStore.success("Movie edited successfully")
         }
-        this.props.movieSubmit(obj)
-
+        
+    }
+    delete()
+    {
+        this.props.movieDelete(this.props.deletename)
+        ToastsStore.success("Movie deleted successfully")
     }
     render() {
 
@@ -79,7 +78,7 @@ class Addmovie extends Component {
                                     </MDBCardHeader>
                             
 
-
+                                        <MDBInput type="text" id='ename' className="form-control" label="Enter Movie name to be edited" onChange={this.props.onMovieEditNameChange} value={this.props.editname} title="Must be Alphabet" required />
 
                                         <MDBInput type="text" id='mname' className="form-control" label="Movie name" onChange={this.props.onMovieNameChange} value={this.props.name} title="Must be Alphabet" required />
 
@@ -118,7 +117,9 @@ class Addmovie extends Component {
                                             </ul>
                                         </div>
 
-                                        <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={this.handleSubmit}>Add Movie</button>
+                                        <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={this.handleSubmit}>Edit Movie</button>
+                                        <MDBInput type="text" id='ename' className="form-control" label="Enter Movie name to be deleted" onChange={this.props.onMovieDeleteNameChange} value={this.props.deletename} title="Must be Alphabet" required />
+                                        <button class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={this.delete}>Delete</button>
                                         <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.TOP_RIGHT} />
                                         
                                         

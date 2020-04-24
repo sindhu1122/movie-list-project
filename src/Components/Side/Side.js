@@ -7,13 +7,20 @@ import {
     Link,
     Redirect
 } from "react-router-dom";
+import jwt from 'jsonwebtoken'
 import './Side.css'
 import { connect } from 'react-redux'
 import Favlist from '../Favlist/Favlist'
-import Filter from '../Filter/Filter'
+import Filter from '../../Container/Filter'
 import Listactors from '../Listactors/Listactors'
 class Side extends Component {
+    state={
+        dis:false
+    }
+    componentDidMount(){
+    this.forceUpdate()
 
+    }
     handleMovie = (event) => {
         this.props.onMovieChange(event.target.value)
     }
@@ -21,7 +28,7 @@ class Side extends Component {
         this.setState({ display: false })
         var code = e.keycode || e.which;
         if (code == 13) {
-            await this.props.movieSearch()
+            await this.props.movieSearch(this.props.moviecha)
         }
     }
 
@@ -29,28 +36,34 @@ class Side extends Component {
     //     this.setState({ toggle: true })
 
     //   }
-    favList = () => {
+    favList = (user) => {
         //this.setState({ display: true, toggle: false })
-        this.props.favLists(this.props.username)
-    }
-    watchlist = () => {
-        // this.setState({ display: true, toggle: false })
         if (!this.props.submit) {
-            alert("please logi to see details")
+            alert("please login to add favourite lists")
         }
-        else {
-            this.props.watchLists(this.props.username)
-
-        }
+        this.props.favLists(user)
     }
+    // watchlist = (user) => {
+    //      this.setState({ dis: true })
+    //     if (!this.props.submit) {
+    //         alert("please login to add watchlists")
+    //     }
+    //     else {
+    //         this.props.watchLists(user)
+
+    //     }
+    // }
     render() {
+        const token = localStorage.getItem("token")
+    
+        const payload = jwt.decode(token)
         console.log(this.props.username)
         return (
 
             <div className="header">
                 <Menu >
-                    <Filter />
-                    <Listactors />
+                   <Link to="/filters">Filters</Link>
+                    <Link to="/actorfilters">List Actors</Link>
                 </Menu>
 
                 <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
@@ -58,11 +71,12 @@ class Side extends Component {
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item active">
-                                <Link class="nav-link waves-effect waves-light" to="/home">
+                                <Link class="nav-link waves-effect waves-light" to="/home" onClick={this.props.toggle}>
                                     <i class="fas fa-home"></i>Home
                                 </Link>
                             </li>
                         </ul>
+                        
 
                         <ul class="navbar-nav ml-auto nav-flex-icons">
                             <li class="nav-item">
@@ -77,27 +91,51 @@ class Side extends Component {
                                 </div>
                             </li>
 
-                            <li class="nav-item">
-                                <Link class="nav-link waves-effect waves-light" onClick={this.watchlist} to="/watchlist">
+                            {/* <li class="nav-item">
+                                <Link class="nav-link waves-effect waves-light" onClick={()=>this.watchlist(payload.userName)} to="/watchlist">
                                     <i class="fa fa-plus-circle"></i>Watch list
                                 </Link>
                             </li>
                             <li class="nav-item">
-                                <Link class="nav-link waves-effect waves-light" onClick={this.favList} to='/favlist'>
+                                <Link class="nav-link waves-effect waves-light" onClick={()=>this.favList(payload.userName)} to='/favlist'>
                                     <i class="fa fa-heart"></i>Favourites
                                 </Link>
-                            </li>
+                            </li> */}
                             {this.props.submit ?
+                             <ul class="navbar-nav ml-auto nav-flex-icons">
+                                 <li class="nav-item">
+                                 <Link class="nav-link waves-effect waves-light"  to='/watchlist' >
+                                 
+                                     <i class="fa fa-plus-circle"></i>Watch list
+                                 </Link>
+                                 
+                             </li>
+                             <li class="nav-item">
+                                 <Link class="nav-link waves-effect waves-light" onClick={()=>this.favList(payload.userName)} to='/favlist'>
+                                     <i class="fa fa-heart"></i>Favourites
+                                 </Link>
+                             </li>
                                 <li class="nav-item">
                                     <Link class="nav-link waves-effect waves-light" onClick={this.props.logout} to="/logout">
                                         <i class="fa fa-profile"></i> Logout
                                     </Link>
-                                </li> :
+                                </li> </ul>:
+                                 <ul class="navbar-nav ml-auto nav-flex-icons">
+                                     <li class="nav-item">
+                                <Link class="nav-link waves-effect waves-light"  to="/sigup">
+                                    <i class="fa fa-plus-circle"></i>Watch list
+                                </Link>
+                            </li>
+                            <li class="nav-item">
+                                <Link class="nav-link waves-effect waves-light"  to='/sigup'>
+                                    <i class="fa fa-heart"></i>Favourites
+                                </Link>
+                            </li>
                                 <li class="nav-item">
                                     <Link class="nav-link waves-effect waves-light" onClick={this.toggle} to="/sigup">
                                         Signup
                                     </Link>
-                                </li>}
+                                </li></ul>}
 
                         </ul>
                     </div>

@@ -1,6 +1,6 @@
 import * as actionTypes from '../actions/action'
 const initialState = {
-    movie: ["a", "c", "d", "e", "g", "l", "m", "f", "t", "l", "m", "h", "ik", "tg", "itr", "kit", "itur", "fgf", "fgg", "gffg", "fgdf", "fdgdfg", "gfh", "ghgfh"],
+    movie: [],
     username: '',
     password: '',
     data: '',
@@ -13,6 +13,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.NAMECHANGE:
+            console.log(action.payload)
             return {
                 ...state,
                 username: action.payload
@@ -30,16 +31,20 @@ const reducer = (state = initialState, action) => {
                 password: '',
                 userName: ''
             }
-
-
-
-        case actionTypes.GET:
-            console.log(state.username)
-            console.log(localStorage.getItem(state.username))
-            return {
+        case actionTypes.MOVIELIST:
+            return{
                 ...state,
-                data: JSON.parse(localStorage.getItem(state.username))
+                movie:action.payload.movie
             }
+
+
+        // case actionTypes.GET:
+        //     console.log(state.username)
+        //     console.log(localStorage.getItem(state.username))
+        //     return {
+        //         ...state,
+        //         data: JSON.parse(localStorage.getItem(state.username))
+        //     }
         case actionTypes.EMAIL:
 
             return {
@@ -54,12 +59,11 @@ const reducer = (state = initialState, action) => {
             }
 
         case actionTypes.SET:
-            console.log(state.data)
-            console.log(action.payload)
-            localStorage.setItem(state.username, JSON.stringify(action.payload))
+            // console.log(state.data)
+            // console.log(action.payload)
+        
             return {
                 ...state,
-                data: JSON.parse(localStorage.getItem(state.username))
             }
         default: return state
     }

@@ -1,4 +1,5 @@
 import * as actionTypes from '../actions/action'
+import addPerson from '../api/addPerson'
 const initialState = {
 
     actname: '',

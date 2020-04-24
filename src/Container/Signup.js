@@ -1,5 +1,7 @@
 import Signup from '../Components/Signup/Signup'
 import { connect } from 'react-redux'
+import axios from 'axios'
+import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
 const mapDispatchToProps = dispatch => {
     return {
         onNameChange: (value) =>
@@ -17,11 +19,18 @@ const mapDispatchToProps = dispatch => {
             dispatch({
                 type: "GET",
             }),
-        setItem: (obj) =>
+        setItem: async(obj) =>
+        {let res=await axios.post('http://localhost:8000/signup',obj)
+        .then(function (response) {
+            console.log(response);
+            alert(response.data.message);
+            
+        })
+        console.log(res)
             dispatch({
                 type: "SET",
-                payload: obj
-            }),
+                payload: res
+            })},
         setEmail: (value) =>
             dispatch({
                 type: "EMAIL",
@@ -36,7 +45,7 @@ const mapDispatchToProps = dispatch => {
     };
 };
 const mapStateToProps = (state) => ({
-    userName: state.signUp.userName,
+    username: state.signUp.username,
     password: state.signUp.password,
     email: state.signUp.email,
     role: state.signUp.role,

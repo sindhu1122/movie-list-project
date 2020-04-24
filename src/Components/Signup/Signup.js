@@ -30,37 +30,33 @@ class Signup extends Component {
   HandleSubmit = async () => {
     let obj = {
     }
+    console.log(this.props.username)
     if (this.props.username != '' && this.props.password != '') {
       if (this.props.role == 'user') {
         obj = {
-          username: this.props.username,
+          userName: this.props.username,
           password: this.props.password,
           email: this.props.email,
           role: this.props.role,
-          watchlist: [],
-          favlist: []
 
         }
       }
       else {
         obj = {
-          username: this.props.username,
+          userName: this.props.username,
           password: this.props.password,
           email: this.props.email,
           role: this.props.role,
-          movies: [],
-          actors: [],
-          directors: [],
-          producer: []
 
         }
 
       }
-      await this.props.getItem();
-      if (!this.props.data) {
-        this.props.setItem(obj)
-      }
+      // await this.props.getItem();
+      // if (!this.props.data) {
+      //   this.props.setItem(obj)
+      // }
       //this.setState({ submit: true })
+      this.props.setItem(obj)
     }
     else {
       this.props.onSubmit()

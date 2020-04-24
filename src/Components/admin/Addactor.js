@@ -11,10 +11,15 @@ class AddActor extends Component {
         super(props)
 
         this.handleSubmit = this.handleSubmit.bind(this);
-
+        this.handleSubmitUpdate=this.handleSubmitUpdate.bind(this)
+        this.handleSubmitDelete=this.handleSubmitDelete.bind(this)
     }
     handleSubmit = () => {
-
+        let obj={
+            name:this.props.name,
+            age:this.props.age,
+            roleId:1
+        }
         if (this.props.name.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
             document.getElementById("name").focus()
@@ -25,23 +30,46 @@ class AddActor extends Component {
         }
 
         else {
+            this.props.actorSubmit(obj)
             ToastsStore.success("Actors Added successfully")
         }
 
+        
     }
     handleSubmitUpdate = () => {
+        let obj
+        if(this.props.update.length <= 0)
+        {
+         obj={
+            age:this.props.editage
+        }
+    }
+    else if(this.props.editage.length <= 0){
+        obj={
+            name:this.props.update
+        }
+    }
+    else{
+        obj={
+            name:this.props.update,
+            age:this.props.editage
+        }
+    }
+
+    
         if (this.props.edit.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
             document.getElementById("edit").focus()
         }
-        else if (this.props.update.length <= 0 || this.props.editage <= 0) {
+        else if (this.props.update.length <= 0 && this.props.editage.length <= 0) {
             ToastsStore.warning('Fields to update is Mandatory')
             document.getElementById("update").focus()
         }
         else {
+            this.props.actorUpdate(this.props.edit,obj)
             ToastsStore.success("Actors Updated successfully")
         }
-
+        
     }
     handleSubmitDelete = () => {
         if (this.props.delete.length <= 0) {
@@ -49,9 +77,10 @@ class AddActor extends Component {
             document.getElementById("delete").focus()
         }
         else {
+            this.props.actorDelete(this.props.delete)
             ToastsStore.success("Actors Deleted successfully")
         }
-
+       
 
     }
     render() {

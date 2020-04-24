@@ -3,6 +3,8 @@ const initialState = {
     movies: [],
     actors: [],
     actress: [],
+    editname:'',
+    deletename:'',
     name: '',
     director: '',
     producer: '',
@@ -14,7 +16,7 @@ const initialState = {
 }
 
 
-const addmovies = (state = initialState, action) => {
+const editmovies = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.MOVIENAME:
 
@@ -22,6 +24,18 @@ const addmovies = (state = initialState, action) => {
                 ...state,
                 name: action.payload
             }
+        case actionTypes.MOVIENAMEEDIT:
+
+            return {
+                ...state,
+                editname: action.payload
+            }
+            case actionTypes.MOVIENAMEDELETE:
+
+                return {
+                    ...state,
+                    deletename: action.payload
+                }
         case actionTypes.YEAR: {
 
             return {
@@ -95,15 +109,20 @@ const addmovies = (state = initialState, action) => {
                 actressinput: action.payload
             }
         }
-        case actionTypes.MOVIESUBMIT:{
+        
+        case actionTypes.MOVIEEDIT:{
             return{
                 ...state
             }
         }
-
+        case actionTypes.MOVIEDELETE:{
+            return{
+                ...state
+            }
+        }
         default:
             return state;
     }
 }
 
-export default addmovies;
+export default editmovies;

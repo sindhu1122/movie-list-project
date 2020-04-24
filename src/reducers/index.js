@@ -9,7 +9,8 @@ import adddirector from './adddirector'
 import addactor from './addactor'
 import addproducer from './addproducer'
 import addactress from './addactress'
+import editmovie from './editMovie'
 //import admin from './admin.js';
 export default combineReducers({
-signUp,login,search,movie,list,addmovie,adddirector,addactor,addproducer,addactress
+signUp,login,search,movie,list,addmovie,adddirector,addactor,addproducer,addactress,editmovie
 })

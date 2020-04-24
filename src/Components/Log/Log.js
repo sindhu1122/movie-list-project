@@ -23,8 +23,11 @@ class SignIn extends Component {
   }
 
   HandleLog = () => {
-
-    this.props.onSubmit();
+     let obj={
+      userName:this.props.username,
+      password:this.props.password
+    }
+    this.props.onSubmit(obj);
 
   }
   HandleChange(event) {

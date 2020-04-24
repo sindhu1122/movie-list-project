@@ -1,5 +1,6 @@
 import SignIn from '../Components/Log/Log'
 import { connect } from 'react-redux'
+import login from '../api/login'
 const mapDispatchToProps = dispatch => {
     return {
         onNameChange: (value) =>
@@ -12,10 +13,13 @@ const mapDispatchToProps = dispatch => {
                 type: "PASSWORDCHANGE",
                 payload: value
             }),
-        onSubmit: () =>
+        onSubmit:async (value) =>
+            {
+                let res=await login(value)
             dispatch({
-                type: "LOG"
-            })
+                type: "LOG",
+                payload:res
+            })}
 
 
 

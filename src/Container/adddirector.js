@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import AddDirector from '../Components/admin/Adddirector'
-
+import addPerson from '../api/addPerson';
+import editPerson from '../api/editPerson'
+import deletePerson from '../api/deletePerson'
 const mapDispatchToProps = dispatch => {
     return {
         onNameChange: (value) =>
@@ -29,6 +31,42 @@ const mapDispatchToProps = dispatch => {
                 type: "DIRNAMEUPDATE",
                 payload: value.target.value
             }),
+        directorSubmit:async(value)=>{
+            try{
+                let res=await addPerson(value)
+                dispatch({
+                    type: "PERSONSUBMIT",
+                    payload: res
+                })
+            }
+            catch(error){
+                alert(error)
+            }
+        },
+        directorUpdate:async(name,value)=>{
+            try{
+                let res=await editPerson(name,value)
+                dispatch({
+                    type: "PERSONEDIT",
+                    payload: res
+                })
+            }
+            catch(error){
+                alert(error)
+            }
+        },
+        directorDelete:async(name,value)=>{
+            try{
+                let res=await deletePerson(name,value)
+                dispatch({
+                    type: "PERSONDELETE",
+                    payload: res
+                })
+            }
+            catch(error){
+                alert(error)
+            }
+        }
 
     };
 };

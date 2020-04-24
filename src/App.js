@@ -7,6 +7,8 @@ import Watchlist from './Container/Watchlist'
 import Favlist from './Container/Favlist'
 import Log from './Container/login'
 import Movie from './Container/movie'
+import Filter from './Container/Filter'
+import Listfilter from './Container/listFilter'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
           <Route path="/favlist" exact component={Favlist}></Route>
           <Route path="/logout" exact component={Signup}></Route>
           <Route path="/home" exact component={Home}></Route>
+          <Route path="/filters" exact component={Filter}></Route>
+          <Route path="/actorfilters" exact component={Listfilter}></Route>
 
         </Switch>
       </Router>

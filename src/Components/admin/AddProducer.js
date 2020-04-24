@@ -17,6 +17,10 @@ class AddProducer extends Component {
 
     }
     handleSubmit = () => {
+        let obj={
+            name:this.props.name,
+            roleId:4
+        }
         if (this.props.name.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
             document.getElementById("name").focus()
@@ -25,9 +29,12 @@ class AddProducer extends Component {
         else {
             ToastsStore.success("Producer Added successfully")
         }
-
+        this.props.producerSubmit(obj)
     }
     handleSubmitUpdate = () => {
+        let obj={
+            name:this.props.update
+        }
         if (this.props.edit.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
             document.getElementById("edit").focus()
@@ -37,6 +44,7 @@ class AddProducer extends Component {
             document.getElementById("update").focus()
         }
         else {
+            this.props.producerUpdate(this.props.edit,obj)
             ToastsStore.success("Producer Updated successfully")
         }
 
@@ -47,6 +55,7 @@ class AddProducer extends Component {
             document.getElementById("delete").focus()
         }
         else {
+            this.props.producerDelete(this.props.delete)
             ToastsStore.success("Producer Deleted successfully")
         }
 

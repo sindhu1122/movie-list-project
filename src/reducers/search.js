@@ -1,6 +1,6 @@
 import * as actionTypes from '../actions/action'
 const initialState = {
-    movie: ["a", "c", "d", "e", "g", "l", "m", "f", "t", "l", "m", "h", "ik", "tg", "itr", "kit", "itur", "fgf", "fgg", "gffg", "fgdf", "fdgdfg", "gfh", "ghgfh"],
+
     moviecha: '',
     chage: false,
     movie1: [],
@@ -24,19 +24,17 @@ const search = (state = initialState, action) => {
             }
 
         case actionTypes.MOVIESEARCH:
-            if (state.movie.includes(state.moviecha)) {
                 let movie1 = []
-                movie1.push(state.moviecha)
+                movie1.push(action.payload)
                 return {
                     ...state,
                     movie1: movie1,
                     chage: true
                 }
-            }
         case actionTypes.TOGGLE:
             return {
                 ...state,
-                display: true
+                chage:false
             }
 
 

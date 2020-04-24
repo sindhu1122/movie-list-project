@@ -9,10 +9,22 @@ import {
     Redirect
 } from "react-router-dom";
 import Movie from '../../Container/movie'
+import jwt from 'jsonwebtoken'
 import Side from '../../Container/Side'
+const { Meta } = Card;
 class Watchlist extends Component {
     state = {
         display: false
+    }
+    componentDidMount=()=>
+    {
+        const token = localStorage.getItem("token")
+    
+        const payload = jwt.decode(token)
+        
+            console.log(payload.userName)
+            this.props.watchLists(payload.userName)
+        
     }
 
     moviedetails = (obj) => {
@@ -25,7 +37,18 @@ class Watchlist extends Component {
         let array = this.props.watchlist.map(obj => {
 
 
-            return <Col span={8}><Card style={{ width: 300, marginTop: 16 }} title={obj} extra={<Link to="/movie" onClick={() => { this.moviedetails(obj) }}>More</Link>}>
+            return <Col span={8}><Card style={{ width: 300, marginTop: 16 }} title={obj.movieName} extra={<Link to="/movie" onClick={() => { this.moviedetails(obj.movieName) }}>More</Link>}>
+                <Meta
+
+                    description={[
+                        <div>
+                            <img
+                                alt="poster not found"
+                                src={obj.imgURL}
+                            />
+                        </div>
+                    ]}
+                />
             </Card></Col>
         })
         return (

@@ -22,8 +22,8 @@ const login = (state = initialState, action) => {
             }
 
         case actionTypes.LOG:
-            let l = JSON.parse(localStorage.getItem(state.username))
-            console.log(l.role)
+        
+            let l=action.payload
             if (state.username == "" || state.password == "") {
                 alert("Enter Credentials")
                 return {
@@ -33,7 +33,7 @@ const login = (state = initialState, action) => {
             }
             else {
                 if (l) {
-                    if (state.password !== l.password) {
+                    if (l.success===false) {
                         alert("Wrong Password!Please give correct credentials")
                         return {
                             ...state,
@@ -41,18 +41,18 @@ const login = (state = initialState, action) => {
                         }
                     }
                     else {
-
-                        alert("sigd")
+                        localStorage.setItem("token", l.token)
+                        alert("login successful")
                         return {
                             ...state,
                             submit: true,
                             log: true,
-                            role: l.role
+                            role: l.user.role
                         }
                     }
                 }
                 else {
-                    alert("user ot exist")
+                    alert("user not exist")
                     return {
                         ...state,
                         submit: false

@@ -13,6 +13,10 @@ class AddDirector extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit = () => {
+        let obj={
+            name:this.props.name,
+            roleId:3
+        }
         if (this.props.name.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
             document.getElementById("name").focus()
@@ -24,6 +28,7 @@ class AddDirector extends Component {
         else {
             ToastsStore.success("Director Added successfully")
         }
+        this.props.directorSubmit(obj)
 
     }
     handleSubmitDelete = () => {
@@ -33,11 +38,16 @@ class AddDirector extends Component {
         }
 
         else {
+            this.props.directorDelete(this.props.delete)
             ToastsStore.success("Director Deleted successfully")
         }
 
     }
     handleSubmitUpdate = () => {
+        let obj={
+            name:this.props.update
+        }
+        
         if (this.props.edit.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
             document.getElementById("name").focus()
@@ -47,6 +57,7 @@ class AddDirector extends Component {
             document.getElementById("updatename").focus()
         }
         else {
+            this.props.directorUpdate(this.props.edit,obj)
             ToastsStore.success("Director Updated successfully")
         }
 

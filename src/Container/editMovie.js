@@ -1,12 +1,22 @@
 import { connect } from 'react-redux';
-import Addmovie from '../Components/admin/Addmovie/Addmovie';
-import addMovie from '../api/addMovie';
-
+import Addmovie from '../Components/admin/editMovie';
+import editMovie from '../api/editMovie';
+import deleteMovie from '../api/deleteMovie'
 const mapDispatchToProps = dispatch => {
     return {
         onMovieNameChange: (value) =>
             dispatch({
                 type: "MOVIENAME",
+                payload: value.target.value
+            }),
+            onMovieEditNameChange: (value) =>
+            dispatch({
+                type: "MOVIENAMEEDIT",
+                payload: value.target.value
+            }),
+            onMovieDeleteNameChange: (value) =>
+            dispatch({
+                type: "MOVIENAMEDELETE",
                 payload: value.target.value
             }),
         onYearChange: (value) =>
@@ -66,29 +76,39 @@ const mapDispatchToProps = dispatch => {
                 type: "ACTRESS",
                 payload: value.target.value
             }),
-            movieSubmit:async(value)=>
+            movieUpdate:async(name,value)=>
             {
-                let res=await addMovie(value)
+                let res=await editMovie(name,value)
             dispatch({
-                type:"MOVIESUBMIT",
+                type:"MOVIEEDIT",
+                payload:res
+            })},
+            movieDelete:async(name)=>
+            {
+                let res=await deleteMovie(name)
+            dispatch({
+                type:"MOVIEDELETE",
                 payload:res
             })}
+
 
     };
 };
 const mapStateToProps = (state) => {
     return {
-        movies: state.addmovie.movies,
-        actors: state.addmovie.actors,
-        actress: state.addmovie.actress,
-        name: state.addmovie.name,
-        director: state.addmovie.director,
-        producer: state.addmovie.producer,
-        year: state.addmovie.year,
-        actorinput: state.addmovie.actorinput,
-        actressinput: state.addmovie.actressinput,
-        rating:state.addmovie.rating,
-        imgURL:state.addmovie.imgURL
+        movies: state.editmovie.movies,
+        actors: state.editmovie.actors,
+        actress: state.editmovie.actress,
+        name: state.editmovie.name,
+        director: state.editmovie.director,
+        producer: state.editmovie.producer,
+        year: state.editmovie.year,
+        actorinput: state.editmovie.actorinput,
+        actressinput: state.editmovie.actressinput,
+        rating:state.editmovie.rating,
+        imgURL:state.editmovie.imgURL,
+        editname:state.editmovie.editname,
+        deletename:state.editmovie.deletename
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Addmovie);

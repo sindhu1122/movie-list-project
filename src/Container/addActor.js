@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import AddActor from '../Components/admin/Addactor'
-
+import addPerson from '../api/addPerson';
+import editPerson from '../api/editPerson'
+import deletePerson from '../api/deletePerson';
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -38,6 +40,35 @@ const mapDispatchToProps = dispatch => {
                 payload: value.target.value
             })
         },
+        actorSubmit:async(value)=>{
+            try{
+            let res=await addPerson(value)
+            dispatch({
+                type:"PERSONSUBMIT",
+                payload:res
+            })}
+            catch(err){alert("cannot add actor")}
+        },
+        
+        actorUpdate:async(name,value)=>{
+            try{
+            let res=await editPerson(name,value)
+            dispatch({
+                type:"PERSONEDIT",
+                payload:res
+            })}
+            catch(err){alert("cannot edit actor")}
+        },
+        actorDelete:async(name)=>{
+            try{
+                let res=await deletePerson(name)
+                dispatch({
+                    type:"PERSONDELETE",
+                    payload:res
+                })}
+                catch(err){alert("cannot Delete actor")}
+
+            }
 
 
 

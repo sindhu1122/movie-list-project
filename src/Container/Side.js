@@ -1,5 +1,8 @@
 import Side from '../Components/Side/Side'
 import { connect } from 'react-redux'
+import searchMovie from '../api/searchmovie'
+import getWatchLists from '../api/watchLists'
+import getFavLists from '../api/favLists'
 const mapDispatchToProps = dispatch => {
     return {
         onMovieChange: (value) =>
@@ -7,25 +10,37 @@ const mapDispatchToProps = dispatch => {
                 type: "MOVIECHANGE",
                 payload: value
             }),
-        movieSearch: () =>
-            dispatch({
-                type: "MOVIESEARCH"
-            }),
+            movieSearch: async(value) =>
+            {
+                let res= await searchMovie(value)
+                console.log(res)
+                dispatch({
+                    type: "MOVIESEARCH",
+                    payload:res
+                })},
         display1: (value) =>
             dispatch({
                 type: "DISPLAY",
                 payload: value
             }),
-        favLists: (value) =>
+        favLists:async (value) =>
+        {
+        let res=await getFavLists(value)
             dispatch({
                 type: "FAVLISTS",
-                payload: value
-            }),
-        watchLists: (value) =>
+                payload: res
+            })},
+        toggle:()=>
+        dispatch({
+            type:"TOGGLE"
+        }),
+        watchLists:async (value) =>
+        {
+            let res=await getWatchLists(value)
             dispatch({
                 type: "WATCHLIST",
-                payload: value
-            }),
+                payload: res
+            })},
         logout: () =>
             dispatch({
                 type: "LOGOUT"
@@ -39,6 +54,8 @@ const mapStateToProps = (state) => ({
     chage: state.search.chage,
     movie1: state.search.movie1,
     display: state.search.display,
-    username: state.login.username
+    username: state.login.username,
+    moviecha:state.search.moviecha
 })
+console.log(mapDispatchToProps,mapStateToProps)
 export default connect(mapStateToProps, mapDispatchToProps)(Side);
