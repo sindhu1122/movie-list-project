@@ -13,14 +13,20 @@ const mapDispatchToProps = dispatch => {
                 type: "PASSWORDCHANGE",
                 payload: value
             }),
-        onSubmit:async (value) =>
-            {
-                let res=await login(value)
-            dispatch({
-                type: "LOG",
-                payload:res
-            })}
+        onSubmit: async (value) => {
+            try {
+                let res = await login(value)
+                console.log(res.msg)
 
+                dispatch({
+                    type: "LOG",
+                    payload: res
+                })
+            }
+            catch (error) {
+                alert(error)
+            }
+        }
 
 
     };

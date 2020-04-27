@@ -1,7 +1,8 @@
 import Home from '../Components/Home/Home'
 import { connect } from 'react-redux'
-import axios from 'axios'
 import searchMovie from '../api/searchmovie'
+import getMovies from '../api/getMovie'
+
 const mapDispatchToProps = dispatch => {
     return {
         onMovieChange: (value) =>
@@ -9,30 +10,41 @@ const mapDispatchToProps = dispatch => {
                 type: "MOVIECHANGE",
                 payload: value
             }),
-        movieSearch: () =>
-        {let res=searchMovie(this.props.moviecha)
-            console.log(res)
-            dispatch({
-                type: "MOVIESEARCH",
-                payload:res
-            })},
+        //     movieSearch: () =>
+        //     {
+        //         try{
+        //         let res=searchMovie(this.props.moviecha)
+        //         console.log(res)
+        //         if(!res)
+        //         alert("No movie found")
+        //         else{
+        //         dispatch({
+        //             type: "MOVIESEARCH",
+        //             payload:res
+        //         })
+        //     }
+        //     }
+        //     catch(error){
+        //         alert(error)
+        //     }
+        // },
         display1: (value) =>
             dispatch({
                 type: "DISPLAY",
                 payload: value
             }),
-        movielist:async()=>
-        {let list=[]
-        let res=await axios.get('http://localhost:8000/getallmovies')
-        .then(function (response) {
-            console.log(response.data);
-            list=response.data
-            
-        })
-            dispatch({
-                type:"MOVIELIST",
-                payload:list
-            })},
+        movielist: async () => {
+            try {
+                let res = await getMovies()
+                dispatch({
+                    type: "MOVIELIST",
+                    payload: res
+                })
+            }
+            catch (error) {
+                alert(error)
+            }
+        }
         //   favLists:(value)=>
         //   dispatch({
         //   type:"FAVLISTS",
@@ -57,6 +69,6 @@ const mapStateToProps = (state) => ({
     movie1: state.search.movie1,
     display: state.search.display,
     username: state.login.username,
-    moviecha:state.search.moviecha
+    moviecha: state.search.moviecha
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

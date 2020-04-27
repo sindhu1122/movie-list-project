@@ -8,7 +8,7 @@ import Favlist from './Container/Favlist'
 import Log from './Container/login'
 import Movie from './Container/movie'
 import Filter from './Container/Filter'
-import Listfilter from './Container/listFilter'
+import Listfilter from './Container/listActors'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 function App() {
   return (
@@ -20,8 +20,8 @@ function App() {
           <Route path="/movie" exact component={Movie}></Route>
           <Route path="/sigup" exact component={Signup}></Route>
           <Route path="/log" exact component={Log}></Route>
-          <Route path="/watchlist" exact component={Watchlist}></Route>
-          <Route path="/favlist" exact component={Favlist}></Route>
+          <Route path="/watchlist"  component={Watchlist}></Route>
+          <Route path="/favlist"  component={Favlist}></Route>
           <Route path="/logout" exact component={Signup}></Route>
           <Route path="/home" exact component={Home}></Route>
           <Route path="/filters" exact component={Filter}></Route>

@@ -9,12 +9,12 @@ const mapDispatchToProps = dispatch => {
                 type: "MOVIENAME",
                 payload: value.target.value
             }),
-            onMovieEditNameChange: (value) =>
+        onMovieEditNameChange: (value) =>
             dispatch({
                 type: "MOVIENAMEEDIT",
                 payload: value.target.value
             }),
-            onMovieDeleteNameChange: (value) =>
+        onMovieDeleteNameChange: (value) =>
             dispatch({
                 type: "MOVIENAMEDELETE",
                 payload: value.target.value
@@ -24,13 +24,14 @@ const mapDispatchToProps = dispatch => {
                 type: "YEAR",
                 payload: value.target.value
             }),
-            onRatingChange: (value) =>
-            {console.log(value)
+        onRatingChange: (value) => {
+            console.log(value)
             dispatch({
                 type: "RATING",
                 payload: value
-            })},
-            onImgChange: (value) =>
+            })
+        },
+        onImgChange: (value) =>
             dispatch({
                 type: "IMG",
                 payload: value.target.value
@@ -76,21 +77,30 @@ const mapDispatchToProps = dispatch => {
                 type: "ACTRESS",
                 payload: value.target.value
             }),
-            movieUpdate:async(name,value)=>
-            {
-                let res=await editMovie(name,value)
-            dispatch({
-                type:"MOVIEEDIT",
-                payload:res
-            })},
-            movieDelete:async(name)=>
-            {
-                let res=await deleteMovie(name)
-            dispatch({
-                type:"MOVIEDELETE",
-                payload:res
-            })}
-
+        movieUpdate: async (name, value) => {
+            try {
+                let res = await editMovie(name, value)
+                dispatch({
+                    type: "MOVIEEDIT",
+                    payload: res
+                })
+            }
+            catch (error) {
+                alert("cannot update movie")
+            }
+        },
+        movieDelete: async (name) => {
+            try {
+                let res = await deleteMovie(name)
+                dispatch({
+                    type: "MOVIEDELETE",
+                    payload: res
+                })
+            }
+            catch (error) {
+                alert("Cannot delete movie")
+            }
+        }
 
     };
 };
@@ -105,10 +115,10 @@ const mapStateToProps = (state) => {
         year: state.editmovie.year,
         actorinput: state.editmovie.actorinput,
         actressinput: state.editmovie.actressinput,
-        rating:state.editmovie.rating,
-        imgURL:state.editmovie.imgURL,
-        editname:state.editmovie.editname,
-        deletename:state.editmovie.deletename
+        rating: state.editmovie.rating,
+        imgURL: state.editmovie.imgURL,
+        editname: state.editmovie.editname,
+        deletename: state.editmovie.deletename
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Addmovie);

@@ -1,7 +1,8 @@
 import * as actionTypes from '../actions/action'
 const initialState = {
     movienamewatch: '',
-    movienamefav: ''
+    movienamefav: '',
+    review: ''
 }
 const movie = (state = initialState, action) => {
     switch (action.type) {
@@ -14,10 +15,19 @@ const movie = (state = initialState, action) => {
             }
         case actionTypes.ADDFAVOURITE:
 
-            
+
             return {
                 ...state,
                 movienamefav: action.payload.movie
+            }
+        case actionTypes.ONREVIEWCHANGE:
+            return {
+                ...state,
+                review: action.payload
+            }
+        case actionTypes.ADDREVIEW:
+            return {
+                ...state
             }
         default: return state
     }

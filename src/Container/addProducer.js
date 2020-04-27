@@ -31,43 +31,43 @@ const mapDispatchToProps = dispatch => {
                 type: "PRODNAMEUPDATE",
                 payload: value.target.value
             }),
-            producerSubmit:async(value)=>{
-                try{
-                    console.log(value)
-                    let res=await addPerson(value)
-                    dispatch({
-                        type: "PERSONSUBMIT",
-                        payload: res
-                    })
-                }
-                catch(error){
-                    alert(error)
-                }
-            },
-            producerUpdate:async(name,value)=>{
-                try{
-                    let res=await editPerson(name,value)
-                    dispatch({
-                        type: "PERSONEDIT",
-                        payload: res
-                    })
-                }
-                catch(error){
-                    alert(error)
-                }
-            },
-            producerDelete:async(name,value)=>{
-                try{
-                    let res=await deletePerson(name,value)
-                    dispatch({
-                        type: "PERSONDELETE",
-                        payload: res
-                    })
-                }
-                catch(error){
-                    alert(error)
-                }
+        producerSubmit: async (value) => {
+            try {
+                console.log(value)
+                let res = await addPerson(value)
+                dispatch({
+                    type: "PERSONSUBMIT",
+                    payload: res
+                })
             }
+            catch (error) {
+                alert(error)
+            }
+        },
+        producerUpdate: async (name, value) => {
+            try {
+                let res = await editPerson(name, value)
+                dispatch({
+                    type: "PERSONEDIT",
+                    payload: res
+                })
+            }
+            catch (error) {
+                alert(error)
+            }
+        },
+        producerDelete: async (name, value) => {
+            try {
+                let res = await deletePerson(name, value)
+                dispatch({
+                    type: "PERSONDELETE",
+                    payload: res
+                })
+            }
+            catch (error) {
+                alert(error)
+            }
+        }
 
     };
 };

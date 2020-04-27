@@ -12,7 +12,7 @@ import './Side.css'
 import { connect } from 'react-redux'
 import Favlist from '../Favlist/Favlist'
 import Filter from '../../Container/Filter'
-import Listactors from '../Listactors/Listactors'
+import Listactors from '../../Container/listActors'
 class Side extends Component {
     state={
         dis:false
@@ -37,6 +37,7 @@ class Side extends Component {
 
     //   }
     favList = (user) => {
+        //this.history.push("/favlist")
         //this.setState({ display: true, toggle: false })
         if (!this.props.submit) {
             alert("please login to add favourite lists")
@@ -101,8 +102,11 @@ class Side extends Component {
                                     <i class="fa fa-heart"></i>Favourites
                                 </Link>
                             </li> */}
+                            {console.log(this.props.submit)}
                             {this.props.submit ?
+                            
                              <ul class="navbar-nav ml-auto nav-flex-icons">
+                                
                                  <li class="nav-item">
                                  <Link class="nav-link waves-effect waves-light"  to='/watchlist' >
                                  

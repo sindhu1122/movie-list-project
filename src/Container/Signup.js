@@ -1,5 +1,6 @@
 import Signup from '../Components/Signup/Signup'
 import { connect } from 'react-redux'
+import signup from '../api/signup'
 import axios from 'axios'
 import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
 const mapDispatchToProps = dispatch => {
@@ -19,18 +20,20 @@ const mapDispatchToProps = dispatch => {
             dispatch({
                 type: "GET",
             }),
-        setItem: async(obj) =>
-        {let res=await axios.post('http://localhost:8000/signup',obj)
-        .then(function (response) {
-            console.log(response);
-            alert(response.data.message);
-            
-        })
-        console.log(res)
+        setItem: async (obj) => {
+            let res
+            try {
+                res = await signup(obj)
+                alert(res.message)
+            } catch (error) {
+                alert("Email already exists")
+            }
+            console.log(res)
             dispatch({
                 type: "SET",
                 payload: res
-            })},
+            })
+        },
         setEmail: (value) =>
             dispatch({
                 type: "EMAIL",

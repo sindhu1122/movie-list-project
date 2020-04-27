@@ -9,15 +9,15 @@ const mapDispatchToProps = dispatch => {
         type: "DISPLAY",
         payload: value
       }),
-      watchLists:async (value) =>
-      {
-        console.log("hii")
-          let res=await getWatchLists(value)
-          console.log(res)
-          dispatch({
-              type: "WATCHLIST",
-              payload: res
-          })}
+    watchLists: async (value) => {
+      console.log("hii")
+      let res = await getWatchLists(value)
+      console.log(res)
+      dispatch({
+        type: "WATCHLIST",
+        payload: res
+      })
+    }
   }
 }
 const mapStateToProps = (state) => ({

@@ -22,6 +22,7 @@ class Favlist extends Component {
         this.props.display1(obj)
     }
     render(){
+        console.log(this.props)
         let array = this.props.favlist.map(obj => {
 
 

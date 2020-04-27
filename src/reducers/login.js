@@ -1,6 +1,5 @@
 import * as actionTypes from '../actions/action'
 const initialState = {
-    movie: ["a", "c", "d", "e", "g", "l", "m", "f", "t", "l", "m", "h", "ik", "tg", "itr", "kit", "itur", "fgf", "fgg", "gffg", "fgdf", "fdgdfg", "gfh", "ghgfh"],
     username: '',
     password: '',
     submit: false,
@@ -22,8 +21,8 @@ const login = (state = initialState, action) => {
             }
 
         case actionTypes.LOG:
-        
-            let l=action.payload
+
+            let l = action.payload
             if (state.username == "" || state.password == "") {
                 alert("Enter Credentials")
                 return {
@@ -33,8 +32,8 @@ const login = (state = initialState, action) => {
             }
             else {
                 if (l) {
-                    if (l.success===false) {
-                        alert("Wrong Password!Please give correct credentials")
+                    if (l.success === false) {
+                        alert(l.msg)
                         return {
                             ...state,
                             submit: false
@@ -42,7 +41,7 @@ const login = (state = initialState, action) => {
                     }
                     else {
                         localStorage.setItem("token", l.token)
-                        alert("login successful")
+                        alert(l.msg)
                         return {
                             ...state,
                             submit: true,

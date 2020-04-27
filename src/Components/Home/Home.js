@@ -18,7 +18,6 @@ import Signup from '../../Container/Signup'
 import Listactors from '../../Components/Listactors/Listactors'
 
 import './Home.css'
-var DefaultRoute = Router.DefaultRoute;
 const { Meta } = Card;
 
 class Home extends React.Component {
@@ -27,7 +26,8 @@ class Home extends React.Component {
     currentPage: 1,
     todosPerPage: 6,
     toggle: false,
-    display: false
+    display: false,
+    c:1
   }
 
   componentDidMount=()=>{
@@ -78,12 +78,11 @@ class Home extends React.Component {
 
     const renderPageNumbers = pageNumbers.map((number, i) => {
       return (
-        number >= this.state.currentPage &&
-          number < this.state.currentPage + 5 ?
+        number >= this.state.c &&
+          number < this.state.c + 5 ?
           <li class="page-item"
             key={number}
             id={number}
-
             onClick={(e) => { this.handleClick(e) }}
           >
             {number}
@@ -185,7 +184,7 @@ class Home extends React.Component {
             <ul class="pagination pg-blue" class="pagination pg-blue justify-content-center" id="page-numbers">
 
               <li className="page-item">
-                <button className="page-link" onClick={() => { if (this.state.currentPage > 1) { this.setState({ currentPage: this.state.currentPage - 1 }) } }} aria-label="Previous">
+                <button className="page-link" onClick={() => { if (this.state.currentPage > 1) { this.setState({ currentPage: this.state.currentPage - 1 ,c:1}) } }} aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>
                   <span className="sr-only">Previous</span>
                 </button>
@@ -194,7 +193,7 @@ class Home extends React.Component {
               {renderPageNumbers}
 
               <li className="page-item">
-                <button className="page-link" onClick={() => { if (this.state.currentPage < pageNumbers.length) { this.setState({ currentPage: this.state.currentPage + 1 }) } }} aria-label="Next">
+                <button className="page-link" onClick={() => { if (this.state.currentPage < pageNumbers.length) { this.setState({ currentPage: this.state.currentPage + 1 ,c:6}) } }} aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>
                   <span className="sr-only">Next</span>
                 </button>

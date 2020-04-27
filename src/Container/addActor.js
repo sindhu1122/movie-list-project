@@ -40,35 +40,38 @@ const mapDispatchToProps = dispatch => {
                 payload: value.target.value
             })
         },
-        actorSubmit:async(value)=>{
-            try{
-            let res=await addPerson(value)
-            dispatch({
-                type:"PERSONSUBMIT",
-                payload:res
-            })}
-            catch(err){alert("cannot add actor")}
-        },
-        
-        actorUpdate:async(name,value)=>{
-            try{
-            let res=await editPerson(name,value)
-            dispatch({
-                type:"PERSONEDIT",
-                payload:res
-            })}
-            catch(err){alert("cannot edit actor")}
-        },
-        actorDelete:async(name)=>{
-            try{
-                let res=await deletePerson(name)
+        actorSubmit: async (value) => {
+            try {
+                let res = await addPerson(value)
                 dispatch({
-                    type:"PERSONDELETE",
-                    payload:res
-                })}
-                catch(err){alert("cannot Delete actor")}
-
+                    type: "PERSONSUBMIT",
+                    payload: res
+                })
             }
+            catch (err) { alert("cannot add actor") }
+        },
+
+        actorUpdate: async (name, value) => {
+            try {
+                let res = await editPerson(name, value)
+                dispatch({
+                    type: "PERSONEDIT",
+                    payload: res
+                })
+            }
+            catch (err) { alert("cannot edit actor") }
+        },
+        actorDelete: async (name) => {
+            try {
+                let res = await deletePerson(name)
+                dispatch({
+                    type: "PERSONDELETE",
+                    payload: res
+                })
+            }
+            catch (err) { alert("cannot Delete actor") }
+
+        }
 
 
 

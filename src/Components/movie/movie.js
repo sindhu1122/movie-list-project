@@ -9,6 +9,8 @@ import Side from '../../Container/Side'
 import { ACTORS, ACTRESS, PRODUCER } from '../../actions/action';
 import './movie.css'
 import jwt from 'jsonwebtoken'
+import {MDBInput} from 'mdbreact'
+import {ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
 const { Meta } = Card;
 
 //var browserHistory = ReactRouter.browserHistory;
@@ -29,6 +31,15 @@ class Movie extends Component {
         }
         console.log(o)
         this.props.addFavourite1(o)
+    }
+    enterPressed = async (e) => {
+
+        var code = e.keycode || e.which;
+        if (code == 13) {
+            await this.props.addReview(this.props.currmovie,this.props.review)
+            ToastsStore.success("Review added")
+           
+        }
     }
     render() {
         const token = localStorage.getItem("token")
@@ -72,12 +83,7 @@ class Movie extends Component {
                     {
                   return <Card justify="space-around" align="middle"
                     style={{ width: 1000, backgroundColor: "#EDC2D8FF", marginTop: 30 }}
-                    // cover={
-                    //     <img
-                    //         alt="poster not found"
-                    //         src={item.imgURL}
-                    //     />
-                    // }
+                    
                     actions={[
                         <button class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={() => { this.addWatch(this.props.currmovie, payload.userName) }}>
                             <i class="fa fa-plus-circle"></i>Watch list
@@ -93,8 +99,16 @@ class Movie extends Component {
                 
                     <Meta
                         title={this.props.currmovie}
+                        
                         description={[
                             <div>
+                                <MDBInput type="text" id='edit' className="form-control form-control-lg" label="Write a review..."
+                                 onChange={this.props.onReviewChange} 
+                                 value={this.props.review}
+                                  title="Must be Alphabet"
+                                  onKeyPress={this.enterPressed}
+                                   required />
+                                    <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.TOP_RIGHT}/>
                                 <img
                             alt="poster not found"
                             src={item.imgURL}
