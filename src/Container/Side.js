@@ -32,24 +32,7 @@ const mapDispatchToProps = dispatch => {
                 type: "DISPLAY",
                 payload: value
             }),
-        favLists: async (value) => {
-            let res = await getFavLists(value)
-            dispatch({
-                type: "FAVLISTS",
-                payload: res
-            })
-        },
-        toggle: () =>
-            dispatch({
-                type: "TOGGLE"
-            }),
-        watchLists: async (value) => {
-            let res = await getWatchLists(value)
-            dispatch({
-                type: "WATCHLIST",
-                payload: res
-            })
-        },
+        
         logout: () =>
             dispatch({
                 type: "LOGOUT"

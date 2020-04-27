@@ -8,7 +8,7 @@ import {
     Link,
     Redirect
 } from "react-router-dom";
-
+import jwt from 'jsonwebtoken'
 import Movie from '../../Container/movie'
 import Side from '../../Container/Side'
 const { Meta } = Card;
@@ -16,17 +16,30 @@ class Favlist extends Component {
     state = {
         display: false
     }
+    componentDidMount()
+    {
+        const token = localStorage.getItem("token")
+    
+        const payload = jwt.decode(token)
+        
+            console.log(payload.userName)
+           this.props.favLists(payload.userName)
+        
+    }
     moviedetails = (obj) => {
         //console.log(this.props.display)
         this.setState({ display: true })
         this.props.display1(obj)
     }
     render(){
-        console.log(this.props)
-        let array = this.props.favlist.map(obj => {
+        console.log(this.props.favlist)
+        let array=[]
+        if(this.props.favlist)
+        {
+         array = this.props.favlist.map(obj => {
 
 
-            return <Col span={8}><Card style={{ width: 300, marginTop: 16 }} title={obj.movieName} extra={<Link to="/movie" onClick={() => { this.moviedetails(obj.movieName) }}>More</Link>}>
+            return <Col span={8}><Card style={{ width: 300, marginTop: 16 }} title={obj.movieName} extra={<Link to={{pathname:`/movie`,state:{currentmovie:obj.movieName}}}>More..</Link>}>
         
                 <Meta
 
@@ -42,6 +55,7 @@ class Favlist extends Component {
                 </Card>
             </Col>
         })
+    }
         return (
             <div>
                 <Side />

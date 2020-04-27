@@ -6,7 +6,7 @@ import {
 } from 'mdbreact';
 //import Home from '../Home/Home'
 //import Bar from '../nav/nav'
-import { Link, Router, Switch, Route } from 'react-router-dom'
+import { Link, Router, Switch, Route,Redirect } from 'react-router-dom'
 import { connect } from "react-redux";
 import Dashboard from '../admin/admidashboard/admidashboard'
 import Signup from '../../Container/Signup'
@@ -56,7 +56,9 @@ class SignIn extends Component {
     return (
       <div className="header">
         {/* <Router> */}
-        {this.props.submit ? <Dashboard username={this.props.username} role={this.props.role} />
+        {this.props.submit ? 
+         <Dashboard username={this.props.username} role={this.props.role} />
+        
           :
           <MDBContainer>
             <MDBRow>

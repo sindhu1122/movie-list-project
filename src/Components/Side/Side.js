@@ -17,10 +17,7 @@ class Side extends Component {
     state={
         dis:false
     }
-    componentDidMount(){
-    this.forceUpdate()
-
-    }
+   
     handleMovie = (event) => {
         this.props.onMovieChange(event.target.value)
     }
@@ -32,28 +29,7 @@ class Side extends Component {
         }
     }
 
-    //   toggle = () => {
-    //     this.setState({ toggle: true })
-
-    //   }
-    favList = (user) => {
-        //this.history.push("/favlist")
-        //this.setState({ display: true, toggle: false })
-        if (!this.props.submit) {
-            alert("please login to add favourite lists")
-        }
-        this.props.favLists(user)
-    }
-    // watchlist = (user) => {
-    //      this.setState({ dis: true })
-    //     if (!this.props.submit) {
-    //         alert("please login to add watchlists")
-    //     }
-    //     else {
-    //         this.props.watchLists(user)
-
-    //     }
-    // }
+   
     render() {
         const token = localStorage.getItem("token")
     
@@ -92,16 +68,6 @@ class Side extends Component {
                                 </div>
                             </li>
 
-                            {/* <li class="nav-item">
-                                <Link class="nav-link waves-effect waves-light" onClick={()=>this.watchlist(payload.userName)} to="/watchlist">
-                                    <i class="fa fa-plus-circle"></i>Watch list
-                                </Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link class="nav-link waves-effect waves-light" onClick={()=>this.favList(payload.userName)} to='/favlist'>
-                                    <i class="fa fa-heart"></i>Favourites
-                                </Link>
-                            </li> */}
                             {console.log(this.props.submit)}
                             {this.props.submit ?
                             
@@ -115,7 +81,7 @@ class Side extends Component {
                                  
                              </li>
                              <li class="nav-item">
-                                 <Link class="nav-link waves-effect waves-light" onClick={()=>this.favList(payload.userName)} to='/favlist'>
+                                 <Link class="nav-link waves-effect waves-light"  to='/favlist'>
                                      <i class="fa fa-heart"></i>Favourites
                                  </Link>
                              </li>
@@ -136,7 +102,7 @@ class Side extends Component {
                                 </Link>
                             </li>
                                 <li class="nav-item">
-                                    <Link class="nav-link waves-effect waves-light" onClick={this.toggle} to="/sigup">
+                                    <Link class="nav-link waves-effect waves-light"  to="/sigup">
                                         Signup
                                     </Link>
                                 </li></ul>}

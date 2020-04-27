@@ -6,18 +6,28 @@ import addReview from '../api/addReview'
 const mapDispatchToProps = dispatch => {
     return {
         addWatch1: async (o) => {
-            let res = await addWatchList(o)
-            dispatch({
-                type: "ADDWATCH",
-                payload: o
-            })
+            try {
+                let res = await addWatchList(o)
+                dispatch({
+                    type: "ADDWATCH",
+                    payload: o
+                })
+            }
+            catch (error) {
+                alert(error)
+            }
         },
         addFavourite1: async (o) => {
-            let result = await addFavouriteList(o)
-            dispatch({
-                type: "ADDFAVOURITE",
-                payload: o
-            })
+            try {
+                let result = await addFavouriteList(o)
+                dispatch({
+                    type: "ADDFAVOURITE",
+                    payload: o
+                })
+            }
+            catch (error) {
+                alert(error)
+            }
         },
         onReviewChange: (value) => {
             dispatch({
@@ -38,7 +48,12 @@ const mapDispatchToProps = dispatch => {
             }
 
 
-        }
+        },
+        display1: (value) =>
+            dispatch({
+                type: "DISPLAY",
+                payload: value
+            }),
 
     }
 }
@@ -47,6 +62,7 @@ const mapStateToProps = (state) => ({
     currmovie: state.search.currmovie,
     username: state.login.username,
     movie: state.signUp.movie,
-    review: state.movie.review
+    review: state.movie.review,
+    submit:state.login.submit
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Movie);

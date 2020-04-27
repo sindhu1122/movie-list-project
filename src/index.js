@@ -16,6 +16,6 @@ const store = createStore(reducer);
 const history = createBrowserHistory();
 
 ReactDOM.render(<Provider store={store}>
-    <App></App>
+ <BrowserRouter>  <App></App></BrowserRouter>
 </Provider>, document.getElementById('root'));
 serviceWorker.unregister();

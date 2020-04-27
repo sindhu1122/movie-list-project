@@ -10,24 +10,7 @@ const mapDispatchToProps = dispatch => {
                 type: "MOVIECHANGE",
                 payload: value
             }),
-        //     movieSearch: () =>
-        //     {
-        //         try{
-        //         let res=searchMovie(this.props.moviecha)
-        //         console.log(res)
-        //         if(!res)
-        //         alert("No movie found")
-        //         else{
-        //         dispatch({
-        //             type: "MOVIESEARCH",
-        //             payload:res
-        //         })
-        //     }
-        //     }
-        //     catch(error){
-        //         alert(error)
-        //     }
-        // },
+        
         display1: (value) =>
             dispatch({
                 type: "DISPLAY",
@@ -45,20 +28,7 @@ const mapDispatchToProps = dispatch => {
                 alert(error)
             }
         }
-        //   favLists:(value)=>
-        //   dispatch({
-        //   type:"FAVLISTS",
-        //   payload:value
-        //   }),
-        //   watchLists:(value)=>
-        //   dispatch({
-        //   type:"WATCHLIST",
-        //   payload:value
-        //   }),
-        //   logout:()=>
-        //   dispatch({
-        //       type:"LOGOUT"
-        //   })
+        
     }
 }
 

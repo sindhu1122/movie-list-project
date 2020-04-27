@@ -10,13 +10,17 @@ const mapDispatchToProps = dispatch => {
         payload: value
       }),
     watchLists: async (value) => {
-      console.log("hii")
-      let res = await getWatchLists(value)
-      console.log(res)
-      dispatch({
-        type: "WATCHLIST",
-        payload: res
-      })
+      try {
+        let res = await getWatchLists(value)
+        console.log(res)
+        dispatch({
+          type: "WATCHLIST",
+          payload: res
+        })
+      }
+      catch (error) {
+        alert("Cannot get watch list")
+      }
     }
   }
 }

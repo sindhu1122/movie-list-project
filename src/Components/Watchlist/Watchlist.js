@@ -16,7 +16,7 @@ class Watchlist extends Component {
     state = {
         display: false
     }
-    componentDidMount=()=>
+    componentDidMount()
     {
         const token = localStorage.getItem("token")
     
@@ -34,10 +34,13 @@ class Watchlist extends Component {
     }
     render() {
         console.log(this.props.watchlist)
-        let array = this.props.watchlist.map(obj => {
+        let array
+        if(this.props.watchlist)
+        {
+         array = this.props.watchlist.map(obj => {
 
 
-            return <Col span={8}><Card style={{ width: 300, marginTop: 16 }} title={obj.movieName} extra={<Link to="/movie" onClick={() => { this.moviedetails(obj.movieName) }}>More</Link>}>
+            return <Col span={8}><Card style={{ width: 300, marginTop: 16 }} title={obj.movieName} extra={<Link to={{pathname:`/movie`,state:{currentmovie:obj.movieName}}}>More..</Link>}>
                 <Meta
 
                     description={[
@@ -51,6 +54,7 @@ class Watchlist extends Component {
                 />
             </Card></Col>
         })
+    }
         return (
             <div>
 

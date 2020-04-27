@@ -27,20 +27,15 @@ class Home extends React.Component {
     todosPerPage: 6,
     toggle: false,
     display: false,
-    c:1
+    c: 1
   }
 
-  componentDidMount=()=>{
+  componentDidMount() {
     this.props.movielist()
   }
   handleMovie = (event) => {
     this.setState({ display: false, toggle: false })
     this.props.onMovieChange(event.target.value)
-  }
-  moviedetails = (obj) => {
-    console.log(this.props.display)
-    // this.setState({ display: true, toggle: false })
-    this.props.display1(obj)
   }
   handleClick = (event) => {
     this.setState({
@@ -89,17 +84,17 @@ class Home extends React.Component {
           </li> : null
       );
     });
-    let array = currentTodos.map((obj,key) => {
-      return <Col span={8}><Card style={{ width: 500, marginTop: 16 }} title={currentTodos[key].movieName} extra={<Link to="/movie" onClick={() => { this.moviedetails(currentTodos[key].movieName) }}>More</Link>}>
-        
-                <Meta
+    let array = currentTodos.map((obj, key) => {
+      return <Col span={8}><Card style={{ width: 500, marginTop: 16 }} title={currentTodos[key].movieName} extra={<Link to={{ pathname: `/movie`, state: { currentmovie: currentTodos[key].movieName } }}>More..</Link>}>
+
+        <Meta
 
           description={[
             <div>
               <img
-                            alt="poster not found"
-                            src={currentTodos[key].imgURL}
-                        />
+                alt="poster not found"
+                src={currentTodos[key].imgURL}
+              />
             </div>
           ]}
         />
@@ -112,65 +107,7 @@ class Home extends React.Component {
       <div >
 
         <Side />
-        {/* {
-            // <div className="header">
-            //   <Menu >
-            //     <Filter />
-            //     <Listactors/>
-            //   </Menu>
-
-            //   <nav class="mb-1 navbar navbar-expand-lg navbar-dark info-color">
-
-            //     <div class="collapse navbar-collapse" id="navbarNav">
-            //       <ul class="navbar-nav mr-auto">
-            //         <li class="nav-item active">
-            //           <Link class="nav-link waves-effect waves-light" to="/home" onClick={() => { this.setState({ display: false, toggle: false }) }}>
-            //             <i class="fas fa-home"></i>Home
-            // </Link>
-            //         </li>
-            //       </ul>
-
-            //       <ul class="navbar-nav ml-auto nav-flex-icons">
-            //         <li class="nav-item">
-            //           <div class="md-form my-0">
-            //             <input
-            //               class="form-control mr-lg-2"
-            //               type="text"
-            //               placeholder="Search"
-            //               aria-label="Search"
-            //               onChange={this.handleMovie}
-            //               onKeyPress={this.enterPressed} />
-            //           </div>
-            //         </li>
-
-            //         <li class="nav-item">
-            //           <Link class="nav-link waves-effect waves-light" onClick={this.watchlist} to='/watchlist'>
-            //             <i class="fa fa-plus-circle"></i>Watch list
-            //     </Link>
-            //         </li>
-            //         <li class="nav-item">
-            //           <Link class="nav-link waves-effect waves-light" onClick={this.favList} to='/favlist'>
-            //             <i class="fa fa-heart"></i>Favourites
-            //      </Link>
-            //         </li>
-            //         {this.props.submit ?
-            //           <li class="nav-item">
-            //             <Link class="nav-link waves-effect waves-light" onClick={this.props.logout} to="/logout">
-            //               <i class="fa fa-profile"></i> Logout
-            //       </Link>
-            //           </li> :
-            //           <li class="nav-item">
-            //             <Link class="nav-link waves-effect waves-light" onClick={this.toggle} to="/sigup">
-            //               Signup
-            //        </Link>
-            //           </li>}
-
-            //       </ul>
-            //     </div>
-            //   </nav>
-              // {console.log(this.props.display)}
-              // {!this.state.display ?
-                <div> */}
+      
         <div className="site-card3" style={{ overflowY: 'scroll' }}>
           <Row gutter={16}>
             {array}
@@ -184,7 +121,7 @@ class Home extends React.Component {
             <ul class="pagination pg-blue" class="pagination pg-blue justify-content-center" id="page-numbers">
 
               <li className="page-item">
-                <button className="page-link" onClick={() => { if (this.state.currentPage > 1) { this.setState({ currentPage: this.state.currentPage - 1 ,c:1}) } }} aria-label="Previous">
+                <button className="page-link" onClick={() => { if (this.state.currentPage > 1) { this.setState({ currentPage: this.state.currentPage - 1, c: 1 }) } }} aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>
                   <span className="sr-only">Previous</span>
                 </button>
@@ -193,7 +130,7 @@ class Home extends React.Component {
               {renderPageNumbers}
 
               <li className="page-item">
-                <button className="page-link" onClick={() => { if (this.state.currentPage < pageNumbers.length) { this.setState({ currentPage: this.state.currentPage + 1 ,c:6}) } }} aria-label="Next">
+                <button className="page-link" onClick={() => { if (this.state.currentPage < pageNumbers.length) { this.setState({ currentPage: this.state.currentPage + 1, c: 6 }) } }} aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>
                   <span className="sr-only">Next</span>
                 </button>

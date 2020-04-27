@@ -6,6 +6,7 @@ import {
     MDBCardHeader, MDBCardBody
 } from 'mdbreact';
 import { ToastsContainer, ToastsStore, ToastsContainerPosition } from 'react-toasts';
+import Nav from './dashboard'
 class AddDirector extends Component {
     constructor(props) {
         super(props)
@@ -66,6 +67,7 @@ class AddDirector extends Component {
 
         return (
             <div>
+                <Nav/>
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol md="12">
