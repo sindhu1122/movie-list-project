@@ -28,19 +28,19 @@ function App() {
           <Route path="/movie" exact component={Movie}></Route>
           <Route path="/sigup" exact component={Signup}></Route>
           <Route path="/log" exact component={Log}></Route>
-          <Route path="/watchlist"  component={Watchlist}></Route>
-          <Route path="/favlist"  component={Favlist}></Route>
+          <Route path="/watchlist" component={Watchlist}></Route>
+          <Route path="/favlist" component={Favlist}></Route>
           <Route path="/logout" exact component={Signup}></Route>
           <Route path="/home" exact component={Home}></Route>
           <Route path="/filters" exact component={Filter}></Route>
           <Route path="/actorfilters" exact component={Listfilter}></Route>
           <Route path="/dashboard" exact component={Dashboard}></Route>
           <Route path="/addmovie" exact component={Addmovie}></Route>
-            <Route path="/director" exact component={Adddirector}></Route>
-            <Route path="/actor" exact component={Addactor}></Route>
-            <Route path="/producer" exact component={AddProducer}></Route>
-            <Route path="/actress" exact component={AddActress}></Route>
-            <Route path="/editmovie" exact component={EditMovie}></Route>
+          <Route path="/director" exact component={Adddirector}></Route>
+          <Route path="/actor" exact component={Addactor}></Route>
+          <Route path="/producer" exact component={AddProducer}></Route>
+          <Route path="/actress" exact component={AddActress}></Route>
+          <Route path="/editmovie" exact component={EditMovie}></Route>
         </Switch>
       </Router>
 
