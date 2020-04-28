@@ -74,11 +74,11 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = (state) => {
     return {
 
-        name: state.addproducer.prodname,
-        age: state.addproducer.prodage,
-        edit: state.addproducer.edit,
-        delete: state.addproducer.delete,
-        update: state.addproducer.update
+        name: state.addproducer.name,
+        age: state.addproducer.age,
+        nameToBeEdited: state.addproducer.nameToBeEdited,
+        nameToBeDeleted: state.addproducer.nameToBeDeleted,
+        nameToBeUpdated: state.addproducer.nameToBeUpdated
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AddProducer);

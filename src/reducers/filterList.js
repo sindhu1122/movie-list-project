@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/action'
 const initialState = {
-    filterlist:'',
-    reslist:''
+    filterLists: '',
+    resultList: ''
 }
 const filterList = (state = initialState, action) => {
     switch (action.type) {
@@ -9,12 +9,12 @@ const filterList = (state = initialState, action) => {
         case actionTypes.FILTERLIST:
             return {
                 ...state,
-                filterlist:action.payload
+                filterLists: action.payload
             }
         case actionTypes.GETFILTERLIST:
-            return{
+            return {
                 ...state,
-                reslist:action.payload
+                resultList: action.payload
 
             }
 

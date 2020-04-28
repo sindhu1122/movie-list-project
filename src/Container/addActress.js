@@ -79,12 +79,12 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = (state) => {
     return {
 
-        name: state.addactress.actname,
-        age: state.addactress.actage,
-        edit: state.addactress.actedit,
-        update: state.addactress.actupdate,
-        delete: state.addactress.actdelete,
-        editage: state.addactress.editage
+        name: state.addactress.name,
+        age: state.addactress.age,
+        nameToBeEdited: state.addactress.nameToBeEdited,
+        nameToBeUpdated: state.addactress.nameToBeUpdated,
+        nameToBeDeleted: state.addactress.nameToBeDeleted,
+        ageToBeUpdated: state.addactress.ageToBeUpdated
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AddActress);

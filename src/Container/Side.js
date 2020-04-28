@@ -32,7 +32,7 @@ const mapDispatchToProps = dispatch => {
                 type: "DISPLAY",
                 payload: value
             }),
-        
+
         logout: () =>
             dispatch({
                 type: "LOGOUT"
@@ -42,12 +42,12 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = (state) => ({
     movie: state.signUp.movie,
-    submit: state.login.submit,
-    chage: state.search.chage,
-    movie1: state.search.movie1,
+    isLoggedIn: state.login.isLoggedIn,
+    searched: state.search.searched,
+    searchedMovie: state.search.searchedMovie,
     display: state.search.display,
     username: state.login.username,
-    moviecha: state.search.moviecha
+    searchedMovieName: state.search.searchedMovieName
 })
 console.log(mapDispatchToProps, mapStateToProps)
 export default connect(mapStateToProps, mapDispatchToProps)(Side);

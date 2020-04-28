@@ -25,7 +25,8 @@ const mapDispatchToProps = dispatch => {
 }
 const mapStateToProps = (state) => ({
 
-  favlist: state.list.favlist
+  favouriteList: state.list.favouriteList,
+  isLoggedIn: state.login.isLoggedIn
 
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Favlist);

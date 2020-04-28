@@ -18,9 +18,9 @@ class AddProducer extends Component {
 
     }
     handleSubmit = () => {
-        let obj={
-            name:this.props.name,
-            roleId:4
+        let obj = {
+            name: this.props.name,
+            roleId: 4
         }
         if (this.props.name.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
@@ -33,30 +33,30 @@ class AddProducer extends Component {
         this.props.producerSubmit(obj)
     }
     handleSubmitUpdate = () => {
-        let obj={
-            name:this.props.update
+        let obj = {
+            name: this.props.nameToBeUpdated
         }
-        if (this.props.edit.length <= 0) {
+        if (this.props.nameToBeEdited.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
             document.getElementById("edit").focus()
         }
-        else if (this.props.update.length <= 0) {
+        else if (this.props.nameToBeUpdated.length <= 0) {
             ToastsStore.warning('Updated Name is Mandatory')
             document.getElementById("update").focus()
         }
         else {
-            this.props.producerUpdate(this.props.edit,obj)
+            this.props.producerUpdate(this.props.nameToBeEdited, obj)
             ToastsStore.success("Producer Updated successfully")
         }
 
     }
     handleSubmitDelete = () => {
-        if (this.props.delete.length <= 0) {
+        if (this.props.nameToBeDeleted.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
             document.getElementById("delete").focus()
         }
         else {
-            this.props.producerDelete(this.props.delete)
+            this.props.producerDelete(this.props.nameToBeDeleted)
             ToastsStore.success("Producer Deleted successfully")
         }
 
@@ -65,7 +65,7 @@ class AddProducer extends Component {
 
         return (
             <div>
-                <Nav/>
+                <Nav />
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol md="12">
@@ -86,10 +86,6 @@ class AddProducer extends Component {
                                                         <MDBInput type="text" id='name' className="form-control" label="Producer name" onChange={this.props.onNameChange} value={this.props.name} title="Must be Alphabet" required />
                                                     </div>
                                                 </td>
-                                                {/* <div className="form-group">
-                        
-                            <MDBInput type="number" id='age' className="form-control" label="Age" onChange={this.props.onAgeChange} value={this.props.age}  title="Must be Alphabet"  required />
-                        </div> */}
                                                 <td>
                                                     <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={this.handleSubmit}>Add Producer</button>
                                                 </td>
@@ -99,7 +95,7 @@ class AddProducer extends Component {
                                                 <td colSpan="2">
                                                     <div className="form-group">
 
-                                                        <MDBInput type="text" id='name' className="form-control" label=" Delete Producer name" onChange={this.props.onNameChangeDelete} value={this.props.delete} title="Must be Alphabet" required />
+                                                        <MDBInput type="text" id='name' className="form-control" label=" Delete Producer name" onChange={this.props.onNameChangeDelete} value={this.props.nameToBeDeleted} title="Must be Alphabet" required />
                                                     </div>
                                                 </td>
                                                 <td>
@@ -111,13 +107,13 @@ class AddProducer extends Component {
                                                 <td >
                                                     <div className="form-group">
 
-                                                        <MDBInput type="text" id='editname' className="form-control" label=" Old Producer name" onChange={this.props.onNameChangeEdit} value={this.props.edit} title="Must be Alphabet" required />
+                                                        <MDBInput type="text" id='editname' className="form-control" label=" Old Producer name" onChange={this.props.onNameChangeEdit} value={this.props.nameToBeEdited} title="Must be Alphabet" required />
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div className="form-group">
 
-                                                        <MDBInput type="text" id='deletename' className="form-control" label=" New Producer name" onChange={this.props.onNameChangeUpdate} value={this.props.update} title="Must be Alphabet" required />
+                                                        <MDBInput type="text" id='deletename' className="form-control" label=" New Producer name" onChange={this.props.onNameChangeUpdate} value={this.props.nameToBeUpdated} title="Must be Alphabet" required />
                                                     </div>
                                                 </td>
                                                 <td>

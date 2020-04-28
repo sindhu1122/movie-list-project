@@ -12,14 +12,14 @@ class AddActor extends Component {
         super(props)
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleSubmitUpdate=this.handleSubmitUpdate.bind(this)
-        this.handleSubmitDelete=this.handleSubmitDelete.bind(this)
+        this.handleSubmitUpdate = this.handleSubmitUpdate.bind(this)
+        this.handleSubmitDelete = this.handleSubmitDelete.bind(this)
     }
     handleSubmit = () => {
-        let obj={
-            name:this.props.name,
-            age:this.props.age,
-            roleId:1
+        let obj = {
+            name: this.props.name,
+            age: this.props.age,
+            roleId: 1
         }
         if (this.props.name.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
@@ -35,60 +35,59 @@ class AddActor extends Component {
             ToastsStore.success("Actors Added successfully")
         }
 
-        
+
     }
     handleSubmitUpdate = () => {
         let obj
-        if(this.props.update.length <= 0)
-        {
-         obj={
-            age:this.props.editage
+        if (this.props.nameToBeUpdated.length <= 0) {
+            obj = {
+                age: this.props.ageToBeUpdated
+            }
         }
-    }
-    else if(this.props.editage.length <= 0){
-        obj={
-            name:this.props.update
+        else if (this.props.ageToBeUpdated.length <= 0) {
+            obj = {
+                name: this.props.nameToBeUpdated
+            }
         }
-    }
-    else{
-        obj={
-            name:this.props.update,
-            age:this.props.editage
+        else {
+            obj = {
+                name: this.props.nameToBeUpdated,
+                age: this.props.ageToBeUpdated
+            }
         }
-    }
 
-    
-        if (this.props.edit.length <= 0) {
+
+        if (this.props.nameToBeEdited.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
             document.getElementById("edit").focus()
         }
-        else if (this.props.update.length <= 0 && this.props.editage.length <= 0) {
+        else if (this.props.nameToBeUpdated.length <= 0 && this.props.ageToBeUpdated.length <= 0) {
             ToastsStore.warning('Fields to update is Mandatory')
             document.getElementById("update").focus()
         }
         else {
-            this.props.actorUpdate(this.props.edit,obj)
+            this.props.actorUpdate(this.props.nameToBeEdited, obj)
             ToastsStore.success("Actors Updated successfully")
         }
-        
+
     }
     handleSubmitDelete = () => {
-        if (this.props.delete.length <= 0) {
+        if (this.props.nameToBeDeleted.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
             document.getElementById("delete").focus()
         }
         else {
-            this.props.actorDelete(this.props.delete)
+            this.props.actorDelete(this.props.nameToBeDeleted)
             ToastsStore.success("Actors Deleted successfully")
         }
-       
+
 
     }
     render() {
 
         return (
             <div>
-                <Nav/>
+                <Nav />
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol md="12">
@@ -124,7 +123,7 @@ class AddActor extends Component {
                                                 <td colSpan="2">
                                                     <div className="form-group">
 
-                                                        <MDBInput type="text" id='delete' className="form-control form-control-lg" label="Actor name to delete" onChange={this.props.onNameDelete} value={this.props.delete} title="Must be Alphabet" required />
+                                                        <MDBInput type="text" id='delete' className="form-control form-control-lg" label="Actor name to delete" onChange={this.props.onNameDelete} value={this.props.nameToBeDeleted} title="Must be Alphabet" required />
                                                     </div>
                                                 </td>
                                                 <td>
@@ -138,17 +137,17 @@ class AddActor extends Component {
                                                 <td>
                                                     <div className="form-group">
 
-                                                        <MDBInput type="text" id='edit' className="form-control form-control-lg" label="Old Actor name" onChange={this.props.onNameEdit} value={this.props.edit} title="Must be Alphabet" required />
+                                                        <MDBInput type="text" id='edit' className="form-control form-control-lg" label="Old Actor name" onChange={this.props.onNameEdit} value={this.props.nameToBeEdited} title="Must be Alphabet" required />
                                                     </div>
                                                 </td>
                                                 <td>
                                                     <div className="form-group">
 
-                                                        <MDBInput type="text" id='update' className="form-control form-control-lg" label="New Actor name " onChange={this.props.onNameUpdate} value={this.props.update} title="Must be Alphabet" required />
+                                                        <MDBInput type="text" id='update' className="form-control form-control-lg" label="New Actor name " onChange={this.props.onNameUpdate} value={this.props.nameToBeUpdated} title="Must be Alphabet" required />
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <MDBInput type="number" id='editage' className="form-control form-control-lg" label="Age" onChange={this.props.onAgeChangeEdit} value={this.props.editage} title="Must be Alphabet" required />
+                                                    <MDBInput type="number" id='editage' className="form-control form-control-lg" label="Age" onChange={this.props.onAgeChangeEdit} value={this.props.ageToBeUpdated} title="Must be Alphabet" required />
                                                 </td>
                                                 <td>
                                                     <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={this.handleSubmitUpdate}>Update</button>

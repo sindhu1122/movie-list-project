@@ -26,8 +26,8 @@ const mapDispatchToProps = dispatch => {
 }
 const mapStateToProps = (state) => ({
 
-  watchlist: state.list.watchlist,
-  submit: state.login.submit
+  watchList: state.list.watchList,
+  isLoggedIn: state.login.isLoggedIn
 
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Watchlist);

@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import 'antd/dist/antd.css';
 import { Card, Avatar } from 'antd';
-import { Link } from 'react-router-dom'
 import Back from '../Back'
-import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import Side from '../../Container/Side'
-import { ACTORS, ACTRESS, PRODUCER } from '../../actions/action';
 import './movie.css'
 import jwt from 'jsonwebtoken'
 import { MDBInput } from 'mdbreact'
@@ -25,12 +21,11 @@ class Movie extends Component {
             movie: mov
         }
         console.log(o)
-        if(this.props.submit)
-        {
-        this.props.addWatch1(o)
-        ToastsStore.success("Movie added to watch list")
+        if (this.props.isLoggedIn) {
+            this.props.addWatch1(o)
+            ToastsStore.success("Movie added to watch list")
         }
-        else{
+        else {
             ToastsStore.warning("Please signin to add to watchlist")
         }
     }
@@ -40,20 +35,19 @@ class Movie extends Component {
             movie: mov
         }
         console.log(o)
-        if(this.props.submit)
-        {
-        this.props.addFavourite1(o)
-        ToastsStore.success("Movie added to Favourite list")
+        if (this.props.isLoggedIn) {
+            this.props.addFavourite1(o)
+            ToastsStore.success("Movie added to Favourite list")
         }
-        else{
+        else {
             ToastsStore.warning("Please signin to add to favorite list")
         }
     }
-    enterPressed = async (e) => {
+    enterPressed = (e) => {
 
         var code = e.keycode || e.which;
         if (code == 13) {
-            await this.props.addReview(this.props.currmovie, this.props.review)
+            this.props.addReview(this.props.currmovie, this.props.review)
             ToastsStore.success("Review added")
 
         }

@@ -4,8 +4,8 @@ import axios from 'axios'
 import filter from '../api/filter'
 const mapStateToProps = (state) => ({
     movie: state.signUp.movie,
-    filterlist: state.filterList.filterlist,
-    reslist: state.filterList.reslist
+    filterLists: state.filterList.filterLists,
+    resultList: state.filterList.resultList
 
 })
 const mapDispatchToProps = dispatch => {

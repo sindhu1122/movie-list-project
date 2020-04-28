@@ -73,11 +73,11 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = (state) => {
     return {
 
-        name: state.adddirector.dirname,
-        age: state.adddirector.dirage,
-        edit: state.adddirector.edit,
-        delete: state.adddirector.delete,
-        update: state.adddirector.update
+        name: state.adddirector.name,
+        age: state.adddirector.age,
+        nameToBeEdited: state.adddirector.nameToBeEdited,
+        nameToBeDeleted: state.adddirector.nameToBeDeleted,
+        nameToBeUpdated: state.adddirector.nameToBeUpdated
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AddDirector);

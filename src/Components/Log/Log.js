@@ -6,7 +6,7 @@ import {
 } from 'mdbreact';
 //import Home from '../Home/Home'
 //import Bar from '../nav/nav'
-import { Link, Router, Switch, Route,Redirect } from 'react-router-dom'
+import { Link, Router, Switch, Route, Redirect } from 'react-router-dom'
 import { connect } from "react-redux";
 import Dashboard from '../admin/admidashboard/admidashboard'
 import Signup from '../../Container/Signup'
@@ -23,9 +23,9 @@ class SignIn extends Component {
   }
 
   HandleLog = () => {
-     let obj={
-      userName:this.props.username,
-      password:this.props.password
+    let obj = {
+      userName: this.props.username,
+      password: this.props.password
     }
     this.props.onSubmit(obj);
 
@@ -36,29 +36,14 @@ class SignIn extends Component {
   HandlePassword(event) {
     this.props.onPasswordChange(event.target.value)
   }
-  //   handleLogout = (e) => {
 
-  //       console.log(this.com)
-  //       //this.log=!this.log;
-  //       this.setState({
-  //       username:'',
-  //       password:'',
-  //       submit:false
-  //       })
-
-  //       console.log(this.state)
-  //       this.com=!this.com
-  //       console.log(this.com)
-
-  //   }
   render() {
     console.log(this.props.username)
     return (
       <div className="header">
         {/* <Router> */}
-        {this.props.submit ? 
-         <Dashboard username={this.props.username} role={this.props.role} />
-        
+        {this.props.isLoggedIn ?
+          <Dashboard username={this.props.username} role={this.props.role} />
           :
           <MDBContainer>
             <MDBRow>
@@ -71,7 +56,7 @@ class SignIn extends Component {
                 </h3>
                     </MDBCardHeader>
                     <form>
-                      <div className={this.props.log ? "hide" : "show"}>
+                      <div className={this.props.logged ? "hide" : "show"}>
 
                         {/* <i class="fas fa-user prefix"></i> */}
                         <MDBInput class="form-control form-control-lg" id="ip1" type="text" label="username" onChange={(event) => this.HandleChange(event)} /><br></br>

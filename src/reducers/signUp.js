@@ -3,10 +3,6 @@ const initialState = {
     movie: [],
     username: '',
     password: '',
-    data: '',
-    moviecha: '',
-    chage: false,
-    movie1: [],
     display: false
 }
 
@@ -32,19 +28,11 @@ const reducer = (state = initialState, action) => {
                 userName: ''
             }
         case actionTypes.MOVIELIST:
-            return{
+            return {
                 ...state,
-                movie:action.payload.movie
+                movie: action.payload.movie
             }
 
-
-        // case actionTypes.GET:
-        //     console.log(state.username)
-        //     console.log(localStorage.getItem(state.username))
-        //     return {
-        //         ...state,
-        //         data: JSON.parse(localStorage.getItem(state.username))
-        //     }
         case actionTypes.EMAIL:
 
             return {
@@ -59,9 +47,6 @@ const reducer = (state = initialState, action) => {
             }
 
         case actionTypes.SET:
-            // console.log(state.data)
-            // console.log(action.payload)
-        
             return {
                 ...state,
             }

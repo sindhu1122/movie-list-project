@@ -1,10 +1,10 @@
 import * as actionTypes from '../actions/action'
 const initialState = {
 
-    moviecha: '',
-    chage: false,
-    movie1: [],
+    searchedMovieName: '',
+    searched: false,
     display: false,
+    searchedMovie: '',
     currmovie: ''
 }
 const search = (state = initialState, action) => {
@@ -13,8 +13,8 @@ const search = (state = initialState, action) => {
         case actionTypes.MOVIECHANGE:
             return {
                 ...state,
-                moviecha: action.payload,
-                chage: false
+                searchedMovieName: action.payload,
+                searched: false
             }
         case actionTypes.DISPLAY:
             return {
@@ -24,17 +24,17 @@ const search = (state = initialState, action) => {
             }
 
         case actionTypes.MOVIESEARCH:
-                let movie1 = []
-                movie1.push(action.payload)
-                return {
-                    ...state,
-                    movie1: movie1,
-                    chage: true
-                }
+            let movie1 = []
+            movie1.push(action.payload)
+            return {
+                ...state,
+                searchedMovie: movie1,
+                searched: true
+            }
         case actionTypes.TOGGLE:
             return {
                 ...state,
-                chage:false
+                searched: false
             }
 
 

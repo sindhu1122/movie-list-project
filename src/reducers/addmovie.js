@@ -7,10 +7,10 @@ const initialState = {
     director: '',
     producer: '',
     year: '',
-    actorinput: '',
-    actressinput: '',
-    rating:'',
-    imgURL:''
+    actorInput: '',
+    actressInput: '',
+    rating: '',
+    imgUrl: ''
 }
 
 
@@ -29,17 +29,17 @@ const addmovies = (state = initialState, action) => {
                 year: action.payload
             }
         }
-        case actionTypes.IMG:{
-            return{
+        case actionTypes.IMG: {
+            return {
                 ...state,
-                imgURL:action.payload
+                imgURL: action.payload
             }
         }
-        case actionTypes.RATING:{
-            return{
+        case actionTypes.RATING: {
+            return {
                 ...state,
-                rating:action.payload
-               
+                rating: action.payload
+
             }
         }
         case actionTypes.DIRECTOR: {
@@ -61,7 +61,7 @@ const addmovies = (state = initialState, action) => {
             return {
                 ...state, actors: [
                     ...state.actors,
-                    state.actorinput
+                    state.actorInput
                 ]
             }
         }
@@ -69,7 +69,7 @@ const addmovies = (state = initialState, action) => {
             return {
                 ...state, actress: [
                     ...state.actress,
-                    state.actressinput
+                    state.actressInput
                 ]
             }
         }
@@ -85,18 +85,18 @@ const addmovies = (state = initialState, action) => {
 
             return {
                 ...state,
-                actorinput: action.payload
+                actorInput: action.payload
             }
         }
         case actionTypes.ACTRESSINPUT: {
 
             return {
                 ...state,
-                actressinput: action.payload
+                actressInput: action.payload
             }
         }
-        case actionTypes.MOVIESUBMIT:{
-            return{
+        case actionTypes.MOVIESUBMIT: {
+            return {
                 ...state
             }
         }

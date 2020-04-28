@@ -19,15 +19,15 @@ class Addmovie extends Component {
 
     }
     handleSubmit = () => {
-       let obj={
-            movieName:this.props.name,
-            releaseYear:this.props.year,
-            actor:this.props.actors,
-            actress:this.props.actress,
-            director:this.props.director,
-            producer:this.props.producer,
-            rating:this.props.rating,
-            imgURL:this.props.imgURL
+        let obj = {
+            movieName: this.props.name,
+            releaseYear: this.props.year,
+            actor: this.props.actors,
+            actress: this.props.actress,
+            director: this.props.director,
+            producer: this.props.producer,
+            rating: this.props.rating,
+            imgURL: this.props.imgUrl
 
         }
         if (this.props.name.length <= 0) {
@@ -67,7 +67,7 @@ class Addmovie extends Component {
 
         return (
             <div>
-                <Nav/>
+                <Nav />
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol md="12">
@@ -78,52 +78,52 @@ class Addmovie extends Component {
                                             Add Movie
                 </h3>
                                     </MDBCardHeader>
-                            
 
 
 
-                                        <MDBInput type="text" id='mname' className="form-control" label="Movie name" onChange={this.props.onMovieNameChange} value={this.props.name} title="Must be Alphabet" required />
+
+                                    <MDBInput type="text" id='mname' className="form-control" label="Movie name" onChange={this.props.onMovieNameChange} value={this.props.name} title="Must be Alphabet" required />
 
 
-                                        <MDBInput type="text" id='ryear' className="form-control" label="Release year" onChange={this.props.onYearChange} value={this.props.year} title="Must be Alphabet" required />
+                                    <MDBInput type="text" id='ryear' className="form-control" label="Release year" onChange={this.props.onYearChange} value={this.props.year} title="Must be Alphabet" required />
 
-                                        <MDBInput type="text" id='rating' className="form-control" label="Rating" onChange={(e)=>this.props.onRatingChange(e.target.value)} value={this.props.rating} title="Must be Alphabet" required />
-                                        {console.log(this.props.rating)}
-                                        <MDBInput type="text" id='img' className="form-control" label="Enter the img URL" onChange={this.props.onImgChange} value={this.props.imgURL} title="Must be Alphabet" required />
-                                        {console.log(this.props.imgURL)}
+                                    <MDBInput type="text" id='rating' className="form-control" label="Rating" onChange={(e) => this.props.onRatingChange(e.target.value)} value={this.props.rating} title="Must be Alphabet" required />
+                                    {console.log(this.props.rating)}
+                                    <MDBInput type="text" id='img' className="form-control" label="Enter the img URL" onChange={this.props.onImgChange} value={this.props.imgURL} title="Must be Alphabet" required />
+                                    {console.log(this.props.imgURL)}
 
-                                        <MDBInput type="text" id='producer' className="form-control" label="Enter Producer Name" onChange={this.props.onProducerChange} value={this.props.producer} required />
+                                    <MDBInput type="text" id='producer' className="form-control" label="Enter Producer Name" onChange={this.props.onProducerChange} value={this.props.producer} required />
 
 
 
-                                        <MDBInput type="text" id="director" className="form-control" label="Enter Director Name" onChange={this.props.onDirectorChange} value={this.props.director} required />
+                                    <MDBInput type="text" id="director" className="form-control" label="Enter Director Name" onChange={this.props.onDirectorChange} value={this.props.director} required />
 
-                                        <div>
-                                            <MDBInput id="actor" class="form-control form-control-lg" label="Enter Actors" onChange={this.props.onActorInputChange} defaultValue={this.props.actorinput} />
-                                            <button class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={this.props.setActors}>Add</button>
-                                            <ul>
-                                                {this.props.actors.map((item, key) => {
-                                                    return <li>{item}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label onClick={() => { this.props.delActors(key); this.setState({ input: this.state.input }) }}>X</label> </li>
-                                                })}
-                                            </ul>
-                                        </div>
+                                    <div>
+                                        <MDBInput id="actor" class="form-control form-control-lg" label="Enter Actors" onChange={this.props.onActorInputChange} defaultValue={this.props.actorinput} />
+                                        <button class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={this.props.setActors}>Add</button>
+                                        <ul>
+                                            {this.props.actors.map((item, key) => {
+                                                return <li>{item}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label onClick={() => { this.props.delActors(key); this.setState({ input: this.state.input }) }}>X</label> </li>
+                                            })}
+                                        </ul>
+                                    </div>
 
-                                        <div>
-                                            <MDBInput id="actress" class="form-control form-control-sm" label="Enter Actress" onChange={this.props.onActressInputChange} defaultValue={this.props.actressinput} />
-                                            <button class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={this.props.setActress}>Add</button>
-                                            <ul>
-                                                {console.log(this.props.actress)}
-                                                {this.props.actress.map((item, key) => {
-                                                    return <li>{item}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label onClick={() => { this.props.delActress(key); this.setState({ input: this.state.input }) }}>X</label> </li>
-                                                })}
-                                            </ul>
-                                        </div>
+                                    <div>
+                                        <MDBInput id="actress" class="form-control form-control-sm" label="Enter Actress" onChange={this.props.onActressInputChange} defaultValue={this.props.actressinput} />
+                                        <button class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={this.props.setActress}>Add</button>
+                                        <ul>
+                                            {console.log(this.props.actress)}
+                                            {this.props.actress.map((item, key) => {
+                                                return <li>{item}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label onClick={() => { this.props.delActress(key); this.setState({ input: this.state.input }) }}>X</label> </li>
+                                            })}
+                                        </ul>
+                                    </div>
 
-                                        <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={this.handleSubmit}>Add Movie</button>
-                                        <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.TOP_RIGHT} />
-                                        
-                                        
-                                    
+                                    <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={this.handleSubmit}>Add Movie</button>
+                                    <ToastsContainer store={ToastsStore} position={ToastsContainerPosition.TOP_RIGHT} />
+
+
+
                                 </MDBCardBody>
                             </MDBCard>
                         </MDBCol>

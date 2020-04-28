@@ -24,7 +24,7 @@ class Home extends React.Component {
   state = {
 
     currentPage: 1,
-    todosPerPage: 6,
+    moviesPerPage: 6,
     toggle: false,
     display: false,
     c: 1
@@ -44,30 +44,28 @@ class Home extends React.Component {
   }
   render() {
     let movie;
-    console.log(this.props.movie1)
-    console.log(this.props.chage)
-    console.log(this.props.movie)
-    if (this.props.chage)
-      movie = this.props.movie1
+
+    if (this.props.searched)
+      movie = this.props.searchedMovie
     else
       movie = this.props.movie
 
     const currentPage = this.state.currentPage
-    const todosPerPage = this.state.todosPerPage;
-    let currentTodos
+    const moviesPerPage = this.state.moviesPerPage;
+    let currentMovies
     // Logic for displaying movies
-    if (movie.length > todosPerPage) {
-      const indexOfLastTodo = currentPage * todosPerPage;
-      const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
-      currentTodos = movie.slice(indexOfFirstTodo, indexOfLastTodo);
-      console.log(currentTodos)
+    if (movie.length > moviesPerPage) {
+      const indexOfLastTodo = currentPage * moviesPerPage;
+      const indexOfFirstTodo = indexOfLastTodo - moviesPerPage;
+      currentMovies = movie.slice(indexOfFirstTodo, indexOfLastTodo);
+      console.log(currentMovies)
     }
     else {
-      currentTodos = movie
+      currentMovies = movie
     }
     // // Logic for displaying page numbers
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(movie.length / todosPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(movie.length / moviesPerPage); i++) {
       pageNumbers.push(i);
     }
 
@@ -84,8 +82,8 @@ class Home extends React.Component {
           </li> : null
       );
     });
-    let array = currentTodos.map((obj, key) => {
-      return <Col span={8}><Card style={{ width: 500, marginTop: 16 }} title={currentTodos[key].movieName} extra={<Link to={{ pathname: `/movie`, state: { currentmovie: currentTodos[key].movieName } }}>More..</Link>}>
+    let array = currentMovies.map((obj, key) => {
+      return <Col span={8}><Card style={{ width: 500, marginTop: 16 }} title={currentMovies[key].movieName} extra={<Link to={{ pathname: `/movie`, state: { currentmovie: currentMovies[key].movieName } }}>More..</Link>}>
 
         <Meta
 
@@ -93,7 +91,7 @@ class Home extends React.Component {
             <div>
               <img
                 alt="poster not found"
-                src={currentTodos[key].imgURL}
+                src={currentMovies[key].imgURL}
               />
             </div>
           ]}
@@ -107,7 +105,7 @@ class Home extends React.Component {
       <div >
 
         <Side />
-      
+
         <div className="site-card3" style={{ overflowY: 'scroll' }}>
           <Row gutter={16}>
             {array}

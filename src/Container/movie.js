@@ -5,24 +5,24 @@ import addFavouriteList from '../api/addFavouriteList'
 import addReview from '../api/addReview'
 const mapDispatchToProps = dispatch => {
     return {
-        addWatch1: async (o) => {
+        addWatch1: async (value) => {
             try {
-                let res = await addWatchList(o)
+                let result = await addWatchList(value)
                 dispatch({
                     type: "ADDWATCH",
-                    payload: o
+                    payload: value
                 })
             }
             catch (error) {
                 alert(error)
             }
         },
-        addFavourite1: async (o) => {
+        addFavourite1: async (value) => {
             try {
-                let result = await addFavouriteList(o)
+                let result = await addFavouriteList(value)
                 dispatch({
                     type: "ADDFAVOURITE",
-                    payload: o
+                    payload: value
                 })
             }
             catch (error) {
@@ -63,6 +63,6 @@ const mapStateToProps = (state) => ({
     username: state.login.username,
     movie: state.signUp.movie,
     review: state.movie.review,
-    submit:state.login.submit
+    isLoggedIn: state.login.isLoggedIn
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Movie);

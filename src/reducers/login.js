@@ -2,8 +2,8 @@ import * as actionTypes from '../actions/action'
 const initialState = {
     username: '',
     password: '',
-    submit: false,
-    log: false,
+    isLoggedIn: false,
+    logged: false,
     role: ''
 }
 const login = (state = initialState, action) => {
@@ -27,7 +27,7 @@ const login = (state = initialState, action) => {
                 alert("Enter Credentials")
                 return {
                     ...state,
-                    submit: false
+                    isLoggedIn: false
                 }
             }
             else {
@@ -44,8 +44,8 @@ const login = (state = initialState, action) => {
                         alert(l.msg)
                         return {
                             ...state,
-                            submit: true,
-                            log: true,
+                            isLoggedIn: true,
+                            logged: true,
                             role: l.user.role
                         }
                     }
@@ -54,7 +54,7 @@ const login = (state = initialState, action) => {
                     alert("user not exist")
                     return {
                         ...state,
-                        submit: false
+                        isLoggedIn: false
                     }
 
                 }
@@ -62,7 +62,7 @@ const login = (state = initialState, action) => {
         case actionTypes.LOGOUT:
             return {
                 ...state,
-                submit: false,
+                isLoggedIn: false,
                 username: '',
                 password: ''
             }

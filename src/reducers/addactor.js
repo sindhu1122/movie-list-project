@@ -1,12 +1,12 @@
 import * as actionTypes from '../actions/action'
 const initialState = {
 
-    actname: '',
-    actage: '',
-    actedit: '',
-    actdelete: '',
-    actupdate: '',
-    editage: ''
+    name: '',
+    age: '',
+    nameToBeEdited: '',
+    nameToBeDeleted: '',
+    nameToBeUpdated: '',
+    ageToBeUpdated: ''
 }
 
 
@@ -16,44 +16,44 @@ const addactor = (state = initialState, action) => {
 
             return {
                 ...state,
-                actname: action.payload
+                name: action.payload
             }
         case actionTypes.ACTAGE:
 
             return {
                 ...state,
-                actage: action.payload
+                age: action.payload
             }
         case actionTypes.ACTEDIT:
             return {
                 ...state,
-                actedit: action.payload
+                nameToBeEdited: action.payload
             }
         case actionTypes.ACTUPDATE:
             return {
                 ...state,
-                actupdate: action.payload
+                nameToBeUpdated: action.payload
             }
         case actionTypes.ACTDELETE:
             return {
                 ...state,
-                actdelete: action.payload
+                nameToBeDeleted: action.payload
             }
         case actionTypes.EDITAGE:
             return {
                 ...state,
-                editage: action.payload
+                ageToBeUpdated: action.payload
             }
         case actionTypes.PERSONSUBMIT:
-            return{
+            return {
                 ...state
             }
         case actionTypes.PERSONEDIT:
-            return{
+            return {
                 ...state
             }
         case actionTypes.PERSONDELETE:
-            return{
+            return {
                 ...state
             }
         default:

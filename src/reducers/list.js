@@ -1,7 +1,7 @@
 import * as actionTypes from '../actions/action'
 const initialState = {
-    favlist: '',
-    watchlist: ''
+    favouriteList: '',
+    watchList: ''
 }
 const search = (state = initialState, action) => {
     switch (action.type) {
@@ -9,15 +9,15 @@ const search = (state = initialState, action) => {
         case actionTypes.FAVLISTS:
             return {
                 ...state,
-                favlist: action.payload
+                favouriteList: action.payload
             }
 
 
         case actionTypes.WATCHLIST:
-            
+
             return {
                 ...state,
-                watchlist: action.payload
+                watchList: action.payload
             }
 
 

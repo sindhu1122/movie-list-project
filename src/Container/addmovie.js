@@ -86,10 +86,10 @@ const mapStateToProps = (state) => {
         director: state.addmovie.director,
         producer: state.addmovie.producer,
         year: state.addmovie.year,
-        actorinput: state.addmovie.actorinput,
-        actressinput: state.addmovie.actressinput,
+        actorInput: state.addmovie.actorInput,
+        actressInput: state.addmovie.actressInput,
         rating: state.addmovie.rating,
-        imgURL: state.addmovie.imgURL
+        imgUrl: state.addmovie.imgURL
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Addmovie);

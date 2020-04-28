@@ -14,7 +14,7 @@ const mapDispatchToProps = dispatch => {
 };
 const mapStateToProps = (state) => ({
     role: state.login.role,
-    submit: state.login.submit
+    isLoggedIn: state.login.isLoggedIn
 
 })
 

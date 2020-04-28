@@ -34,8 +34,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = (state) => ({
     username: state.login.username,
     password: state.login.password,
-    log: state.login.log,
-    submit: state.login.submit,
+    logged: state.login.logged,
+    isLoggedIn: state.login.isLoggedIn,
     role: state.login.role
 
 })

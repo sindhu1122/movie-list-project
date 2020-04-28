@@ -10,7 +10,7 @@ const mapDispatchToProps = dispatch => {
                 type: "MOVIECHANGE",
                 payload: value
             }),
-        
+
         display1: (value) =>
             dispatch({
                 type: "DISPLAY",
@@ -28,17 +28,17 @@ const mapDispatchToProps = dispatch => {
                 alert(error)
             }
         }
-        
+
     }
 }
 
 const mapStateToProps = (state) => ({
     movie: state.signUp.movie,
-    submit: state.login.submit,
-    chage: state.search.chage,
-    movie1: state.search.movie1,
+    isLoggedIn: state.login.isLoggedIn,
+    searched: state.search.searched,
+    searchedMovie: state.search.searchedMovie,
     display: state.search.display,
     username: state.login.username,
-    moviecha: state.search.moviecha
+    searchedMovieName: state.search.searchedMovieName
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

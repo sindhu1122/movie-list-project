@@ -86,7 +86,7 @@ const mapDispatchToProps = dispatch => {
                 })
             }
             catch (error) {
-                alert("cannot update movie")
+                //alert("cannot update movie")
             }
         },
         movieDelete: async (name) => {
@@ -113,12 +113,12 @@ const mapStateToProps = (state) => {
         director: state.editmovie.director,
         producer: state.editmovie.producer,
         year: state.editmovie.year,
-        actorinput: state.editmovie.actorinput,
-        actressinput: state.editmovie.actressinput,
+        actorInput: state.editmovie.actorinput,
+        actressInput: state.editmovie.actressinput,
         rating: state.editmovie.rating,
         imgURL: state.editmovie.imgURL,
-        editname: state.editmovie.editname,
-        deletename: state.editmovie.deletename
+        nameToBeEdited: state.editmovie.nameToBeEdited,
+        nameToBeDeleted: state.editmovie.nameToBeDeleted
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Addmovie);

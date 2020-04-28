@@ -27,7 +27,7 @@ class Filter extends React.Component {
   async componentDidUpdate(previousProps, prevState) {
     if (this.state.toggle !== prevState.toggle) {
       await this.props.filterList(this.state.selectedList)
-      this.props.getList(this.props.filterlist)
+      this.props.getList(this.props.filterLists)
     }
   }
   moviedetails = (obj) => {
@@ -75,7 +75,7 @@ class Filter extends React.Component {
       })
     })
     let array
-    mov = this.props.reslist
+    mov = this.props.resultList
     if (mov.length > 0) {
       array = mov.map((obj, key) => {
         return <Col span={8}><Card style={{ width: 500, marginTop: 16 }} title={obj.movieName} extra={<Link to={{ pathname: `/movie`, state: { currentmovie: obj.movieName } }}>More..</Link>}>

@@ -16,46 +16,42 @@ class Favlist extends Component {
     state = {
         display: false
     }
-    componentDidMount()
-    {
+    componentDidMount() {
         const token = localStorage.getItem("token")
-    
         const payload = jwt.decode(token)
-        
-            console.log(payload.userName)
-           this.props.favLists(payload.userName)
-        
+        console.log(payload.userName)
+        this.props.favLists(payload.userName)
+
     }
     moviedetails = (obj) => {
         //console.log(this.props.display)
         this.setState({ display: true })
         this.props.display1(obj)
     }
-    render(){
+    render() {
         console.log(this.props.favlist)
-        let array=[]
-        if(this.props.favlist)
-        {
-         array = this.props.favlist.map(obj => {
+        let array = []
+        if (this.props.favouriteList) {
+            array = this.props.favouriteList.map(obj => {
 
 
-            return <Col span={8}><Card style={{ width: 300, marginTop: 16 }} title={obj.movieName} extra={<Link to={{pathname:`/movie`,state:{currentmovie:obj.movieName}}}>More..</Link>}>
-        
-                <Meta
+                return <Col span={8}><Card style={{ width: 300, marginTop: 16 }} title={obj.movieName} extra={<Link to={{ pathname: `/movie`, state: { currentmovie: obj.movieName } }}>More..</Link>}>
 
-                    description={[
-                        <div>
-                            <img
-                                alt="poster not found"
-                                src={obj.imgURL}
-                            />
-                        </div>
-                    ]}
-                />
+                    <Meta
+
+                        description={[
+                            <div>
+                                <img
+                                    alt="poster not found"
+                                    src={obj.imgURL}
+                                />
+                            </div>
+                        ]}
+                    />
                 </Card>
-            </Col>
-        })
-    }
+                </Col>
+            })
+        }
         return (
             <div>
                 <Side />

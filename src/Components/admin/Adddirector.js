@@ -14,18 +14,14 @@ class AddDirector extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleSubmit = () => {
-        let obj={
-            name:this.props.name,
-            roleId:3
+        let obj = {
+            name: this.props.name,
+            roleId: 3
         }
         if (this.props.name.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
             document.getElementById("name").focus()
         }
-        // else if(this.props.age.length<=0){
-        //     ToastsStore.warning('Age is Mandatory')
-        //     document.getElementById("age").focus()
-        // }
         else {
             ToastsStore.success("Director Added successfully")
         }
@@ -33,32 +29,32 @@ class AddDirector extends Component {
 
     }
     handleSubmitDelete = () => {
-        if (this.props.delete.length <= 0) {
+        if (this.props.nameToBeDeleted.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
             document.getElementById("deletename").focus()
         }
 
         else {
-            this.props.directorDelete(this.props.delete)
+            this.props.directorDelete(this.props.nameToBeDeleted)
             ToastsStore.success("Director Deleted successfully")
         }
 
     }
     handleSubmitUpdate = () => {
-        let obj={
-            name:this.props.update
+        let obj = {
+            name: this.props.nameToBeUpdated
         }
-        
-        if (this.props.edit.length <= 0) {
+
+        if (this.props.nameToBeEdited.length <= 0) {
             ToastsStore.warning('Name is Mandatory')
             document.getElementById("name").focus()
         }
-        else if (this.props.update.length <= 0) {
+        else if (this.props.nameToBeUpdated.length <= 0) {
             ToastsStore.warning('Updated value is Mandatory')
             document.getElementById("updatename").focus()
         }
         else {
-            this.props.directorUpdate(this.props.edit,obj)
+            this.props.directorUpdate(this.props.nameToBeEdited, obj)
             ToastsStore.success("Director Updated successfully")
         }
 
@@ -67,7 +63,7 @@ class AddDirector extends Component {
 
         return (
             <div>
-                <Nav/>
+                <Nav />
                 <MDBContainer>
                     <MDBRow>
                         <MDBCol md="12">
@@ -95,7 +91,7 @@ class AddDirector extends Component {
                                                 <td colSpan="2">
                                                     <div className="form-group">
 
-                                                        <MDBInput type="text" id='deletename' className="form-control form-control-lg" label=" Delete Director name" onChange={this.props.onNameChangeDelete} value={this.props.delete} title="Must be Alphabet" required />
+                                                        <MDBInput type="text" id='deletename' className="form-control form-control-lg" label=" Delete Director name" onChange={this.props.onNameChangeDelete} value={this.props.nameToBeDeleted} title="Must be Alphabet" required />
                                                     </div>
                                                 </td >
                                                 <td>
@@ -107,11 +103,11 @@ class AddDirector extends Component {
                                                 <td>
                                                     <div className="form-group">
 
-                                                        <MDBInput type="text" id='editname' className="form-control form-control-lg" label=" Old Director name" onChange={this.props.onNameChangeEdit} value={this.props.edit} title="Must be Alphabet" required />
+                                                        <MDBInput type="text" id='editname' className="form-control form-control-lg" label=" Old Director name" onChange={this.props.onNameChangeEdit} value={this.props.nameToBeEdited} title="Must be Alphabet" required />
                                                     </div>
                                                 </td >
                                                 <td>
-                                                    <MDBInput type="text" id='updatename' className="form-control form-control-lg" label=" New Director name" onChange={this.props.onNameChangeUpdate} value={this.props.update} title="Must be Alphabet" required />
+                                                    <MDBInput type="text" id='updatename' className="form-control form-control-lg" label=" New Director name" onChange={this.props.onNameChangeUpdate} value={this.props.nameToBeUpdated} title="Must be Alphabet" required />
                                                 </td>
                                                 <td>
                                                     <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={this.handleSubmitUpdate}>Update Director</button>

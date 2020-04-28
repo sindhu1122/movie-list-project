@@ -27,7 +27,8 @@ class FilterList extends React.Component {
   async componentDidUpdate(previousProps, prevState) {
     if (this.state.toggle !== prevState.toggle) {
       await this.props.filterList(this.state.selectedList)
-      this.props.getList(this.props.filterlist)
+      console.log(this.props.filterLists)
+      this.props.getList(this.props.filterLists)
     }
   }
 
@@ -61,7 +62,7 @@ class FilterList extends React.Component {
       })
     })
     let array
-    mov = this.props.reslist
+    mov = this.props.resultList
     if (mov.length > 0) {
       array = mov.map((obj, key) => {
         return <Col span={8}><Card style={{ width: 200, marginTop: 16 }} title={obj}  >

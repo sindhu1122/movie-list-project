@@ -27,7 +27,7 @@ class Signup extends Component {
     this.HandleSubmit = this.HandleSubmit.bind(this);
 
   }
-  HandleSubmit = async () => {
+  HandleSubmit = () => {
     let obj = {
     }
     console.log(this.props.username)
@@ -51,11 +51,7 @@ class Signup extends Component {
         }
 
       }
-      // await this.props.getItem();
-      // if (!this.props.data) {
-      //   this.props.setItem(obj)
-      // }
-      //this.setState({ submit: true })
+
       this.props.setItem(obj)
     }
     else {
@@ -93,7 +89,7 @@ class Signup extends Component {
                     </MDBCardHeader>
                     <form>
 
-                      <div className={this.log ? "hide" : "show"}>
+                      <div className={this.logged ? "hide" : "show"}>
 
 
                         <MDBInput class="form-control form-control-lg" id="ip1" type="text" label="username" onChange={(event) => this.HandleChange(event)} /><br></br>

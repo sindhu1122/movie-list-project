@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import filterActors from '../api/filterActors'
 const mapStateToProps = (state) => ({
     movie: state.signUp.movie,
-    filterlist: state.listActors.filterlist,
-    reslist: state.listActors.reslist
+    filterLists: state.listActors.filterLists,
+    resultList: state.listActors.resultList
 
 })
 const mapDispatchToProps = dispatch => {

@@ -14,5 +14,5 @@ import filterList from './filterList'
 import listActors from './listActors'
 //import admin from './admin.js';
 export default combineReducers({
-signUp,login,search,movie,list,addmovie,adddirector,addactor,addproducer,addactress,editmovie,filterList,listActors
+    signUp, login, search, movie, list, addmovie, adddirector, addactor, addproducer, addactress, editmovie, filterList, listActors
 })

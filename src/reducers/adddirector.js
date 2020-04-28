@@ -1,11 +1,11 @@
 import * as actionTypes from '../actions/action'
 const initialState = {
 
-    dirname: '',
-    dirage: '',
-    edit:'',
-    delete:'',
-    update:''
+    name: '',
+    age: '',
+    nameToBeEdited: '',
+    nameToBeDeleted: '',
+    nameToBeUpdated: ''
 }
 
 
@@ -15,31 +15,31 @@ const adddirector = (state = initialState, action) => {
 
             return {
                 ...state,
-                dirname: action.payload
+                name: action.payload
             }
         case actionTypes.DIRAGE:
 
             return {
                 ...state,
-                dirage: action.payload
+                age: action.payload
             }
         case actionTypes.DIRNAMEEDIT:
 
             return {
                 ...state,
-                edit: action.payload
+                nameToBeEdited: action.payload
             }
         case actionTypes.DIRNAMEDELETE:
 
             return {
                 ...state,
-                delete: action.payload
+                nameToBeDeleted: action.payload
             }
         case actionTypes.DIRNAMEUPDATE:
 
             return {
                 ...state,
-                update: action.payload
+                nameToBeUpdated: action.payload
             }
 
         default:

@@ -2,12 +2,12 @@ import * as actionTypes from '../actions/action'
 import addPerson from '../api/addPerson'
 const initialState = {
 
-    actname: '',
-    actage: '',
-    actedit: '',
-    actdelete: '',
-    actupdate: '',
-    editage:''
+    name: '',
+    age: '',
+    nameToBeEdited: '',
+    nameToBeDeleted: '',
+    nameToBeUpdated: '',
+    ageToBeUpdated: ''
 }
 
 
@@ -17,34 +17,34 @@ const addactress = (state = initialState, action) => {
 
             return {
                 ...state,
-                actname: action.payload
+                name: action.payload
             }
         case actionTypes.ACTRESSAGE:
 
             return {
                 ...state,
-                actage: action.payload
+                age: action.payload
             }
         case actionTypes.ACTRESSEDIT:
             return {
                 ...state,
-                actedit: action.payload
+                nameToBeEdited: action.payload
             }
         case actionTypes.ACTRESSUPDATE:
             return {
                 ...state,
-                actupdate: action.payload
+                nameToBeUpdated: action.payload
             }
         case actionTypes.ACTRESSDELETE:
             return {
                 ...state,
-                actdelete: action.payload
+                nameToBeDeleted: action.payload
             }
-            case actionTypes.EDITAGEACTRESS:
-                return {
-                    ...state,
-                    editage: action.payload
-                }
+        case actionTypes.EDITAGEACTRESS:
+            return {
+                ...state,
+                ageToBeUpdated: action.payload
+            }
 
         default:
             return state;

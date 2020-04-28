@@ -1,11 +1,11 @@
 import * as actionTypes from '../actions/action'
 const initialState = {
 
-    prodname: '',
-    prodage: '',
-    edit: '',
-    delete: '',
-    update: ''
+    name: '',
+    age: '',
+    nameToBeEdited: '',
+    nameToBeDeleted: '',
+    nameToBeUpdated: ''
 }
 
 
@@ -15,31 +15,31 @@ const addproducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                prodname: action.payload
+                name: action.payload
             }
         case actionTypes.PRODAGE:
 
             return {
                 ...state,
-                prodage: action.payload
+                age: action.payload
             }
         case actionTypes.PRODNAMEEDIT:
 
             return {
                 ...state,
-                edit: action.payload
+                nameToBeEdited: action.payload
             }
         case actionTypes.PRODNAMEDELETE:
 
             return {
                 ...state,
-                delete: action.payload
+                nameToBeDeleted: action.payload
             }
         case actionTypes.PRODNAMEUPDATE:
 
             return {
                 ...state,
-                update: action.payload
+                nameToBeUpdated: action.payload
             }
 
 
