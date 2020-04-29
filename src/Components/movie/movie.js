@@ -47,7 +47,7 @@ class Movie extends Component {
 
         var code = e.keycode || e.which;
         if (code == 13) {
-            this.props.addReview(this.props.currmovie, this.props.review)
+            this.props.addReview(this.props.currentMovie, this.props.review)
             ToastsStore.success("Review added")
 
         }
@@ -59,7 +59,7 @@ class Movie extends Component {
         let movie = this.props.movie
         let actor = [], actress = [], director = [], producer = []
         movie.map((item, key) => {
-            if (this.props.currmovie == item.movieName) {
+            if (this.props.currentMovie == item.movieName) {
                 item.MoviePeople.map((item1, key1) => {
                     item1.MoviePersonRoles.map((item2, key2) => {
                         if (item2.roleId == 1)
@@ -82,22 +82,22 @@ class Movie extends Component {
 
             <div justify="space-around" align="middle">
 
-                {console.log(this.props.currmovie)}
+                
                 {console.log(this.props.username)}
                 {console.log(this.props.movie)}
 
                 <Side />
                 <Back />
                 {movie.map((item, key) => {
-                    if (this.props.currmovie == item.movieName) {
+                    if (this.props.currentMovie == item.movieName) {
                         return <Card justify="space-around" align="middle"
                             style={{ width: 1000, backgroundColor: "#EDC2D8FF", marginTop: 30 }}
 
                             actions={[
-                                <button class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={() => { this.addWatch(this.props.currmovie, payload.userName) }}>
+                                <button class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={() => { this.addWatch(this.props.currentMovie, payload.userName) }}>
                                     <i class="fa fa-plus-circle"></i>Watch list
                         </button>,
-                                <button class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={() => { this.addFavourite(this.props.currmovie, payload.userName) }}>
+                                <button class="btn btn-outline-primary btn-sm m-0 waves-effect" onClick={() => { this.addFavourite(this.props.currentMovie, payload.userName) }}>
                                     <i class="fa fa-heart"></i>Favourite list
                         </button>,
                                 <button class="btn btn-outline-primary btn-sm m-0 waves-effect">
@@ -107,7 +107,7 @@ class Movie extends Component {
                         >
 
                             <Meta
-                                title={this.props.currmovie}
+                                title={this.props.currentMovie}
 
                                 description={[
                                     <div>

@@ -5,7 +5,7 @@ const initialState = {
     searched: false,
     display: false,
     searchedMovie: '',
-    currmovie: ''
+    currentMovie: ''
 }
 const search = (state = initialState, action) => {
     switch (action.type) {
@@ -20,7 +20,7 @@ const search = (state = initialState, action) => {
             return {
                 ...state,
                 display: true,
-                currmovie: action.payload
+                currentMovie: action.payload
             }
 
         case actionTypes.MOVIESEARCH:

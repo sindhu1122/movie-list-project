@@ -59,7 +59,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = (state) => ({
-    currmovie: state.search.currmovie,
+    currentMovie: state.search.currentMovie,
     username: state.login.username,
     movie: state.signUp.movie,
     review: state.movie.review,
